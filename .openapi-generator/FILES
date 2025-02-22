@@ -1,11 +1,14 @@
 .gitignore
 .npmignore
-.openapi-generator-ignore
 README.md
 package.json
+src/apis/AccountsApi.ts
 src/apis/HealthApi.ts
+src/apis/PluggyApi.ts
 src/apis/index.ts
 src/index.ts
+src/models/AccountEntity.ts
+src/models/AccountEntityConnector.ts
 src/models/ExceptionResponseEntity.ts
 src/models/ExceptionResponseEntityErrorsInner.ts
 src/models/HealthResponseDto.ts

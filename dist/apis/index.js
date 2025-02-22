@@ -16,4 +16,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 /* tslint:disable */
 /* eslint-disable */
+__exportStar(require("./AccountsApi"), exports);
 __exportStar(require("./HealthApi"), exports);
+__exportStar(require("./PluggyApi"), exports);
