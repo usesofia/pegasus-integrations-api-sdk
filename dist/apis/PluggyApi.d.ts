@@ -10,7 +10,10 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateConnectTokenResponseBodyDto } from '../models/index';
+import type { CreateConnectTokenRequestBodyDto, CreateConnectTokenResponseBodyDto } from '../models/index';
+export interface CreateConnectTokenRequest {
+    createConnectTokenRequestBodyDto: CreateConnectTokenRequestBodyDto;
+}
 /**
  * PluggyApi - interface
  *
@@ -21,15 +24,16 @@ export interface PluggyApiInterface {
     /**
      *
      * @summary Create a connect token
+     * @param {CreateConnectTokenRequestBodyDto} createConnectTokenRequestBodyDto
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PluggyApiInterface
      */
-    createConnectTokenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateConnectTokenResponseBodyDto>>;
+    createConnectTokenRaw(requestParameters: CreateConnectTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateConnectTokenResponseBodyDto>>;
     /**
      * Create a connect token
      */
-    createConnectToken(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto>;
+    createConnectToken(requestParameters: CreateConnectTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto>;
 }
 /**
  *
@@ -38,9 +42,9 @@ export declare class PluggyApi extends runtime.BaseAPI implements PluggyApiInter
     /**
      * Create a connect token
      */
-    createConnectTokenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateConnectTokenResponseBodyDto>>;
+    createConnectTokenRaw(requestParameters: CreateConnectTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateConnectTokenResponseBodyDto>>;
     /**
      * Create a connect token
      */
-    createConnectToken(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto>;
+    createConnectToken(requestParameters: CreateConnectTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto>;
 }

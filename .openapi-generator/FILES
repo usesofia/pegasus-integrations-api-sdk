@@ -9,6 +9,7 @@ src/apis/index.ts
 src/index.ts
 src/models/AccountEntity.ts
 src/models/AccountEntityConnector.ts
+src/models/CreateConnectTokenRequestBodyDto.ts
 src/models/CreateConnectTokenResponseBodyDto.ts
 src/models/ExceptionResponseEntity.ts
 src/models/ExceptionResponseEntityErrorsInner.ts

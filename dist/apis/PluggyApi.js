@@ -78,19 +78,24 @@ var PluggyApi = /** @class */ (function (_super) {
     /**
      * Create a connect token
      */
-    PluggyApi.prototype.createConnectTokenRaw = function (initOverrides) {
+    PluggyApi.prototype.createConnectTokenRaw = function (requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
             var queryParameters, headerParameters, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        if (requestParameters['createConnectTokenRequestBodyDto'] == null) {
+                            throw new runtime.RequiredError('createConnectTokenRequestBodyDto', 'Required parameter "createConnectTokenRequestBodyDto" was null or undefined when calling createConnectToken().');
+                        }
                         queryParameters = {};
                         headerParameters = {};
+                        headerParameters['Content-Type'] = 'application/json';
                         return [4 /*yield*/, this.request({
                                 path: "/external/open-finance/pluggy/connect-token",
                                 method: 'POST',
                                 headers: headerParameters,
                                 query: queryParameters,
+                                body: (0, index_1.CreateConnectTokenRequestBodyDtoToJSON)(requestParameters['createConnectTokenRequestBodyDto']),
                             }, initOverrides)];
                     case 1:
                         response = _a.sent();
@@ -102,12 +107,12 @@ var PluggyApi = /** @class */ (function (_super) {
     /**
      * Create a connect token
      */
-    PluggyApi.prototype.createConnectToken = function (initOverrides) {
+    PluggyApi.prototype.createConnectToken = function (requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
             var response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.createConnectTokenRaw(initOverrides)];
+                    case 0: return [4 /*yield*/, this.createConnectTokenRaw(requestParameters, initOverrides)];
                     case 1:
                         response = _a.sent();
                         return [4 /*yield*/, response.value()];

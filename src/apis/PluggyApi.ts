@@ -15,15 +15,22 @@
 
 import * as runtime from '../runtime';
 import type {
+  CreateConnectTokenRequestBodyDto,
   CreateConnectTokenResponseBodyDto,
   ExceptionResponseEntity,
 } from '../models/index';
 import {
+    CreateConnectTokenRequestBodyDtoFromJSON,
+    CreateConnectTokenRequestBodyDtoToJSON,
     CreateConnectTokenResponseBodyDtoFromJSON,
     CreateConnectTokenResponseBodyDtoToJSON,
     ExceptionResponseEntityFromJSON,
     ExceptionResponseEntityToJSON,
 } from '../models/index';
+
+export interface CreateConnectTokenRequest {
+    createConnectTokenRequestBodyDto: CreateConnectTokenRequestBodyDto;
+}
 
 /**
  * PluggyApi - interface
@@ -35,16 +42,17 @@ export interface PluggyApiInterface {
     /**
      * 
      * @summary Create a connect token
+     * @param {CreateConnectTokenRequestBodyDto} createConnectTokenRequestBodyDto 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PluggyApiInterface
      */
-    createConnectTokenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateConnectTokenResponseBodyDto>>;
+    createConnectTokenRaw(requestParameters: CreateConnectTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateConnectTokenResponseBodyDto>>;
 
     /**
      * Create a connect token
      */
-    createConnectToken(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto>;
+    createConnectToken(requestParameters: CreateConnectTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto>;
 
 }
 
@@ -56,16 +64,26 @@ export class PluggyApi extends runtime.BaseAPI implements PluggyApiInterface {
     /**
      * Create a connect token
      */
-    async createConnectTokenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateConnectTokenResponseBodyDto>> {
+    async createConnectTokenRaw(requestParameters: CreateConnectTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateConnectTokenResponseBodyDto>> {
+        if (requestParameters['createConnectTokenRequestBodyDto'] == null) {
+            throw new runtime.RequiredError(
+                'createConnectTokenRequestBodyDto',
+                'Required parameter "createConnectTokenRequestBodyDto" was null or undefined when calling createConnectToken().'
+            );
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         const response = await this.request({
             path: `/external/open-finance/pluggy/connect-token`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: CreateConnectTokenRequestBodyDtoToJSON(requestParameters['createConnectTokenRequestBodyDto']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateConnectTokenResponseBodyDtoFromJSON(jsonValue));
@@ -74,8 +92,8 @@ export class PluggyApi extends runtime.BaseAPI implements PluggyApiInterface {
     /**
      * Create a connect token
      */
-    async createConnectToken(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto> {
-        const response = await this.createConnectTokenRaw(initOverrides);
+    async createConnectToken(requestParameters: CreateConnectTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto> {
+        const response = await this.createConnectTokenRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

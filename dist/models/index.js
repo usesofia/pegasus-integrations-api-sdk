@@ -18,6 +18,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable */
 __exportStar(require("./AccountEntity"), exports);
 __exportStar(require("./AccountEntityConnector"), exports);
+__exportStar(require("./CreateConnectTokenRequestBodyDto"), exports);
 __exportStar(require("./CreateConnectTokenResponseBodyDto"), exports);
 __exportStar(require("./ExceptionResponseEntity"), exports);
 __exportStar(require("./ExceptionResponseEntityErrorsInner"), exports);
