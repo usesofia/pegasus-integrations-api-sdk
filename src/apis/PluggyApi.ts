@@ -14,6 +14,16 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  CreateConnectTokenResponseBodyDto,
+  ExceptionResponseEntity,
+} from '../models/index';
+import {
+    CreateConnectTokenResponseBodyDtoFromJSON,
+    CreateConnectTokenResponseBodyDtoToJSON,
+    ExceptionResponseEntityFromJSON,
+    ExceptionResponseEntityToJSON,
+} from '../models/index';
 
 /**
  * PluggyApi - interface
@@ -29,12 +39,12 @@ export interface PluggyApiInterface {
      * @throws {RequiredError}
      * @memberof PluggyApiInterface
      */
-    createConnectTokenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    createConnectTokenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateConnectTokenResponseBodyDto>>;
 
     /**
      * Create a connect token
      */
-    createConnectToken(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    createConnectToken(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto>;
 
 }
 
@@ -46,7 +56,7 @@ export class PluggyApi extends runtime.BaseAPI implements PluggyApiInterface {
     /**
      * Create a connect token
      */
-    async createConnectTokenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async createConnectTokenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateConnectTokenResponseBodyDto>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -58,14 +68,15 @@ export class PluggyApi extends runtime.BaseAPI implements PluggyApiInterface {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateConnectTokenResponseBodyDtoFromJSON(jsonValue));
     }
 
     /**
      * Create a connect token
      */
-    async createConnectToken(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.createConnectTokenRaw(initOverrides);
+    async createConnectToken(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto> {
+        const response = await this.createConnectTokenRaw(initOverrides);
+        return await response.value();
     }
 
 }

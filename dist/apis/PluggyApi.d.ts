@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
+import type { CreateConnectTokenResponseBodyDto } from '../models/index';
 /**
  * PluggyApi - interface
  *
@@ -24,11 +25,11 @@ export interface PluggyApiInterface {
      * @throws {RequiredError}
      * @memberof PluggyApiInterface
      */
-    createConnectTokenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    createConnectTokenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateConnectTokenResponseBodyDto>>;
     /**
      * Create a connect token
      */
-    createConnectToken(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    createConnectToken(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto>;
 }
 /**
  *
@@ -37,9 +38,9 @@ export declare class PluggyApi extends runtime.BaseAPI implements PluggyApiInter
     /**
      * Create a connect token
      */
-    createConnectTokenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    createConnectTokenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateConnectTokenResponseBodyDto>>;
     /**
      * Create a connect token
      */
-    createConnectToken(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    createConnectToken(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto>;
 }
