@@ -1,5 +1,7 @@
 export * from './AccountEntity';
 export * from './AccountEntityConnector';
+export * from './CacheGetResponseDto';
+export * from './CacheSetDto';
 export * from './CreateConnectTokenRequestBodyDto';
 export * from './CreateConnectTokenResponseBodyDto';
 export * from './ExceptionResponseEntity';

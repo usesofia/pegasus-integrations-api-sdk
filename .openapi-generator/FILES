@@ -3,12 +3,15 @@
 README.md
 package.json
 src/apis/AccountsApi.ts
+src/apis/CacheApi.ts
 src/apis/HealthApi.ts
 src/apis/PluggyApi.ts
 src/apis/index.ts
 src/index.ts
 src/models/AccountEntity.ts
 src/models/AccountEntityConnector.ts
+src/models/CacheGetResponseDto.ts
+src/models/CacheSetDto.ts
 src/models/CreateConnectTokenRequestBodyDto.ts
 src/models/CreateConnectTokenResponseBodyDto.ts
 src/models/ExceptionResponseEntity.ts
