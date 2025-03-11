@@ -54,10 +54,10 @@ export interface AccountEntity {
     name: string;
     /**
      *
-     * @type {number}
+     * @type {string}
      * @memberof AccountEntity
      */
-    balance: number;
+    balance: string;
     /**
      *
      * @type {string}
