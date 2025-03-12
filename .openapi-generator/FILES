@@ -8,6 +8,7 @@ src/apis/HealthApi.ts
 src/apis/PluggyApi.ts
 src/apis/index.ts
 src/index.ts
+src/models/AccountTransactionsSyncJobPayload.ts
 src/models/CacheGetResponseDto.ts
 src/models/CacheSetDto.ts
 src/models/CreateConnectTokenRequestBodyDto.ts

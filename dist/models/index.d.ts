@@ -1,3 +1,4 @@
+export * from './AccountTransactionsSyncJobPayload';
 export * from './CacheGetResponseDto';
 export * from './CacheSetDto';
 export * from './CreateConnectTokenRequestBodyDto';

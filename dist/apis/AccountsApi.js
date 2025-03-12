@@ -163,6 +163,50 @@ var AccountsApi = /** @class */ (function (_super) {
             });
         });
     };
+    /**
+     * Process account transactions sync job
+     */
+    AccountsApi.prototype.syncAccountTransactionsRaw = function (requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function () {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (requestParameters['accountTransactionsSyncJobPayload'] == null) {
+                            throw new runtime.RequiredError('accountTransactionsSyncJobPayload', 'Required parameter "accountTransactionsSyncJobPayload" was null or undefined when calling syncAccountTransactions().');
+                        }
+                        queryParameters = {};
+                        headerParameters = {};
+                        headerParameters['Content-Type'] = 'application/json';
+                        return [4 /*yield*/, this.request({
+                                path: "/internal/queues/account-transactions-sync",
+                                method: 'POST',
+                                headers: headerParameters,
+                                query: queryParameters,
+                                body: (0, index_1.AccountTransactionsSyncJobPayloadToJSON)(requestParameters['accountTransactionsSyncJobPayload']),
+                            }, initOverrides)];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, new runtime.VoidApiResponse(response)];
+                }
+            });
+        });
+    };
+    /**
+     * Process account transactions sync job
+     */
+    AccountsApi.prototype.syncAccountTransactions = function (requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.syncAccountTransactionsRaw(requestParameters, initOverrides)];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     return AccountsApi;
 }(runtime.BaseAPI));
 exports.AccountsApi = AccountsApi;

@@ -10,12 +10,15 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { OnBankAccountCreatedPayload, RawAccountEntity } from '../models/index';
+import type { AccountTransactionsSyncJobPayload, OnBankAccountCreatedPayload, RawAccountEntity } from '../models/index';
 export interface FindAllAccountsRequest {
     itemId: string;
 }
 export interface StartAccountTransactionsSyncRequest {
     onBankAccountCreatedPayload: OnBankAccountCreatedPayload;
+}
+export interface SyncAccountTransactionsRequest {
+    accountTransactionsSyncJobPayload: AccountTransactionsSyncJobPayload;
 }
 /**
  * AccountsApi - interface
@@ -50,6 +53,19 @@ export interface AccountsApiInterface {
      * Start account transactions sync
      */
     startAccountTransactionsSync(requestParameters: StartAccountTransactionsSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     *
+     * @summary Process account transactions sync job
+     * @param {AccountTransactionsSyncJobPayload} accountTransactionsSyncJobPayload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccountsApiInterface
+     */
+    syncAccountTransactionsRaw(requestParameters: SyncAccountTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * Process account transactions sync job
+     */
+    syncAccountTransactions(requestParameters: SyncAccountTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 }
 /**
  *
@@ -71,4 +87,12 @@ export declare class AccountsApi extends runtime.BaseAPI implements AccountsApiI
      * Start account transactions sync
      */
     startAccountTransactionsSync(requestParameters: StartAccountTransactionsSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     * Process account transactions sync job
+     */
+    syncAccountTransactionsRaw(requestParameters: SyncAccountTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * Process account transactions sync job
+     */
+    syncAccountTransactions(requestParameters: SyncAccountTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 }

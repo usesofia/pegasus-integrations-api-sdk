@@ -15,10 +15,13 @@
 
 import * as runtime from '../runtime';
 import type {
+  AccountTransactionsSyncJobPayload,
   OnBankAccountCreatedPayload,
   RawAccountEntity,
 } from '../models/index';
 import {
+    AccountTransactionsSyncJobPayloadFromJSON,
+    AccountTransactionsSyncJobPayloadToJSON,
     OnBankAccountCreatedPayloadFromJSON,
     OnBankAccountCreatedPayloadToJSON,
     RawAccountEntityFromJSON,
@@ -31,6 +34,10 @@ export interface FindAllAccountsRequest {
 
 export interface StartAccountTransactionsSyncRequest {
     onBankAccountCreatedPayload: OnBankAccountCreatedPayload;
+}
+
+export interface SyncAccountTransactionsRequest {
+    accountTransactionsSyncJobPayload: AccountTransactionsSyncJobPayload;
 }
 
 /**
@@ -69,6 +76,21 @@ export interface AccountsApiInterface {
      * Start account transactions sync
      */
     startAccountTransactionsSync(requestParameters: StartAccountTransactionsSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+
+    /**
+     * 
+     * @summary Process account transactions sync job
+     * @param {AccountTransactionsSyncJobPayload} accountTransactionsSyncJobPayload 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccountsApiInterface
+     */
+    syncAccountTransactionsRaw(requestParameters: SyncAccountTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+
+    /**
+     * Process account transactions sync job
+     */
+    syncAccountTransactions(requestParameters: SyncAccountTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
 }
 
@@ -143,6 +165,41 @@ export class AccountsApi extends runtime.BaseAPI implements AccountsApiInterface
      */
     async startAccountTransactionsSync(requestParameters: StartAccountTransactionsSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.startAccountTransactionsSyncRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * Process account transactions sync job
+     */
+    async syncAccountTransactionsRaw(requestParameters: SyncAccountTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters['accountTransactionsSyncJobPayload'] == null) {
+            throw new runtime.RequiredError(
+                'accountTransactionsSyncJobPayload',
+                'Required parameter "accountTransactionsSyncJobPayload" was null or undefined when calling syncAccountTransactions().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/internal/queues/account-transactions-sync`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: AccountTransactionsSyncJobPayloadToJSON(requestParameters['accountTransactionsSyncJobPayload']),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Process account transactions sync job
+     */
+    async syncAccountTransactions(requestParameters: SyncAccountTransactionsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.syncAccountTransactionsRaw(requestParameters, initOverrides);
     }
 
 }
