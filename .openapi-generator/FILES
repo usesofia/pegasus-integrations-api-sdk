@@ -8,8 +8,6 @@ src/apis/HealthApi.ts
 src/apis/PluggyApi.ts
 src/apis/index.ts
 src/index.ts
-src/models/AccountEntity.ts
-src/models/AccountEntityConnector.ts
 src/models/CacheGetResponseDto.ts
 src/models/CacheSetDto.ts
 src/models/CreateConnectTokenRequestBodyDto.ts
@@ -17,6 +15,14 @@ src/models/CreateConnectTokenResponseBodyDto.ts
 src/models/ExceptionResponseEntity.ts
 src/models/ExceptionResponseEntityErrorsInner.ts
 src/models/HealthResponseDto.ts
+src/models/OnBankAccountCreatedPayload.ts
+src/models/OnBankAccountCreatedPayloadBankAccount.ts
+src/models/OnBankAccountCreatedPayloadRequester.ts
+src/models/OnBankAccountCreatedPayloadRequesterOrganization.ts
+src/models/OnBankAccountCreatedPayloadRequesterOrganizationChildrenInner.ts
+src/models/OnBankAccountCreatedPayloadRequesterOrganizationParent.ts
+src/models/RawAccountEntity.ts
+src/models/RawAccountEntityConnector.ts
 src/models/index.ts
 src/runtime.ts
 tsconfig.json

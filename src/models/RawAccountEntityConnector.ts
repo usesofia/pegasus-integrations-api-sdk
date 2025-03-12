@@ -16,45 +16,45 @@ import { mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface AccountEntityConnector
+ * @interface RawAccountEntityConnector
  */
-export interface AccountEntityConnector {
+export interface RawAccountEntityConnector {
     /**
      * 
      * @type {number}
-     * @memberof AccountEntityConnector
+     * @memberof RawAccountEntityConnector
      */
     id: number;
     /**
      * 
      * @type {string}
-     * @memberof AccountEntityConnector
+     * @memberof RawAccountEntityConnector
      */
     name: string;
     /**
      * 
      * @type {string}
-     * @memberof AccountEntityConnector
+     * @memberof RawAccountEntityConnector
      */
     institutionUrl: string;
     /**
      * 
      * @type {string}
-     * @memberof AccountEntityConnector
+     * @memberof RawAccountEntityConnector
      */
     imageUrl: string;
     /**
      * 
      * @type {string}
-     * @memberof AccountEntityConnector
+     * @memberof RawAccountEntityConnector
      */
     primaryColor: string;
 }
 
 /**
- * Check if a given object implements the AccountEntityConnector interface.
+ * Check if a given object implements the RawAccountEntityConnector interface.
  */
-export function instanceOfAccountEntityConnector(value: object): value is AccountEntityConnector {
+export function instanceOfRawAccountEntityConnector(value: object): value is RawAccountEntityConnector {
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('institutionUrl' in value) || value['institutionUrl'] === undefined) return false;
@@ -63,11 +63,11 @@ export function instanceOfAccountEntityConnector(value: object): value is Accoun
     return true;
 }
 
-export function AccountEntityConnectorFromJSON(json: any): AccountEntityConnector {
-    return AccountEntityConnectorFromJSONTyped(json, false);
+export function RawAccountEntityConnectorFromJSON(json: any): RawAccountEntityConnector {
+    return RawAccountEntityConnectorFromJSONTyped(json, false);
 }
 
-export function AccountEntityConnectorFromJSONTyped(json: any, ignoreDiscriminator: boolean): AccountEntityConnector {
+export function RawAccountEntityConnectorFromJSONTyped(json: any, ignoreDiscriminator: boolean): RawAccountEntityConnector {
     if (json == null) {
         return json;
     }
@@ -81,11 +81,11 @@ export function AccountEntityConnectorFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function AccountEntityConnectorToJSON(json: any): AccountEntityConnector {
-    return AccountEntityConnectorToJSONTyped(json, false);
+export function RawAccountEntityConnectorToJSON(json: any): RawAccountEntityConnector {
+    return RawAccountEntityConnectorToJSONTyped(json, false);
 }
 
-export function AccountEntityConnectorToJSONTyped(value?: AccountEntityConnector | null, ignoreDiscriminator: boolean = false): any {
+export function RawAccountEntityConnectorToJSONTyped(value?: RawAccountEntityConnector | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

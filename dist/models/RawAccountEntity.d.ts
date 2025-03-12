@@ -9,96 +9,96 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { AccountEntityConnector } from './AccountEntityConnector';
+import type { RawAccountEntityConnector } from './RawAccountEntityConnector';
 /**
  *
  * @export
- * @interface AccountEntity
+ * @interface RawAccountEntity
  */
-export interface AccountEntity {
+export interface RawAccountEntity {
     /**
      *
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
-    provider: AccountEntityProviderEnum;
+    provider: RawAccountEntityProviderEnum;
     /**
      *
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
     id: string;
     /**
      *
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
-    type: AccountEntityTypeEnum;
+    type: RawAccountEntityTypeEnum;
     /**
      *
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
-    subtype: AccountEntitySubtypeEnum;
+    subtype: RawAccountEntitySubtypeEnum;
     /**
      *
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
     number: string;
     /**
      *
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
     name: string;
     /**
      *
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
     balance: string;
     /**
      *
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
-    currencyCode: AccountEntityCurrencyCodeEnum;
+    currencyCode: RawAccountEntityCurrencyCodeEnum;
     /**
      *
-     * @type {AccountEntityConnector}
-     * @memberof AccountEntity
+     * @type {RawAccountEntityConnector}
+     * @memberof RawAccountEntity
      */
-    connector: AccountEntityConnector;
+    connector: RawAccountEntityConnector;
 }
 /**
  * @export
  */
-export declare const AccountEntityProviderEnum: {
+export declare const RawAccountEntityProviderEnum: {
     readonly Pluggy: "PLUGGY";
 };
-export type AccountEntityProviderEnum = typeof AccountEntityProviderEnum[keyof typeof AccountEntityProviderEnum];
+export type RawAccountEntityProviderEnum = typeof RawAccountEntityProviderEnum[keyof typeof RawAccountEntityProviderEnum];
 /**
  * @export
  */
-export declare const AccountEntityTypeEnum: {
+export declare const RawAccountEntityTypeEnum: {
     readonly Bank: "BANK";
     readonly Credit: "CREDIT";
 };
-export type AccountEntityTypeEnum = typeof AccountEntityTypeEnum[keyof typeof AccountEntityTypeEnum];
+export type RawAccountEntityTypeEnum = typeof RawAccountEntityTypeEnum[keyof typeof RawAccountEntityTypeEnum];
 /**
  * @export
  */
-export declare const AccountEntitySubtypeEnum: {
+export declare const RawAccountEntitySubtypeEnum: {
     readonly CheckingAccount: "CHECKING_ACCOUNT";
     readonly SavingsAccount: "SAVINGS_ACCOUNT";
     readonly CreditCard: "CREDIT_CARD";
 };
-export type AccountEntitySubtypeEnum = typeof AccountEntitySubtypeEnum[keyof typeof AccountEntitySubtypeEnum];
+export type RawAccountEntitySubtypeEnum = typeof RawAccountEntitySubtypeEnum[keyof typeof RawAccountEntitySubtypeEnum];
 /**
  * @export
  */
-export declare const AccountEntityCurrencyCodeEnum: {
+export declare const RawAccountEntityCurrencyCodeEnum: {
     readonly Aed: "AED";
     readonly Afn: "AFN";
     readonly All: "ALL";
@@ -279,12 +279,12 @@ export declare const AccountEntityCurrencyCodeEnum: {
     readonly Zmw: "ZMW";
     readonly Zwl: "ZWL";
 };
-export type AccountEntityCurrencyCodeEnum = typeof AccountEntityCurrencyCodeEnum[keyof typeof AccountEntityCurrencyCodeEnum];
+export type RawAccountEntityCurrencyCodeEnum = typeof RawAccountEntityCurrencyCodeEnum[keyof typeof RawAccountEntityCurrencyCodeEnum];
 /**
- * Check if a given object implements the AccountEntity interface.
+ * Check if a given object implements the RawAccountEntity interface.
  */
-export declare function instanceOfAccountEntity(value: object): value is AccountEntity;
-export declare function AccountEntityFromJSON(json: any): AccountEntity;
-export declare function AccountEntityFromJSONTyped(json: any, ignoreDiscriminator: boolean): AccountEntity;
-export declare function AccountEntityToJSON(json: any): AccountEntity;
-export declare function AccountEntityToJSONTyped(value?: AccountEntity | null, ignoreDiscriminator?: boolean): any;
+export declare function instanceOfRawAccountEntity(value: object): value is RawAccountEntity;
+export declare function RawAccountEntityFromJSON(json: any): RawAccountEntity;
+export declare function RawAccountEntityFromJSONTyped(json: any, ignoreDiscriminator: boolean): RawAccountEntity;
+export declare function RawAccountEntityToJSON(json: any): RawAccountEntity;
+export declare function RawAccountEntityToJSONTyped(value?: RawAccountEntity | null, ignoreDiscriminator?: boolean): any;

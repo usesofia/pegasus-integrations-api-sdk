@@ -15,15 +15,22 @@
 
 import * as runtime from '../runtime';
 import type {
-  AccountEntity,
+  OnBankAccountCreatedPayload,
+  RawAccountEntity,
 } from '../models/index';
 import {
-    AccountEntityFromJSON,
-    AccountEntityToJSON,
+    OnBankAccountCreatedPayloadFromJSON,
+    OnBankAccountCreatedPayloadToJSON,
+    RawAccountEntityFromJSON,
+    RawAccountEntityToJSON,
 } from '../models/index';
 
 export interface FindAllAccountsRequest {
     itemId: string;
+}
+
+export interface StartAccountTransactionsSyncRequest {
+    onBankAccountCreatedPayload: OnBankAccountCreatedPayload;
 }
 
 /**
@@ -41,12 +48,27 @@ export interface AccountsApiInterface {
      * @throws {RequiredError}
      * @memberof AccountsApiInterface
      */
-    findAllAccountsRaw(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AccountEntity>>>;
+    findAllAccountsRaw(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<RawAccountEntity>>>;
 
     /**
      * Find all accounts for a given item
      */
-    findAllAccounts(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AccountEntity>>;
+    findAllAccounts(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<RawAccountEntity>>;
+
+    /**
+     * 
+     * @summary Start account transactions sync
+     * @param {OnBankAccountCreatedPayload} onBankAccountCreatedPayload 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccountsApiInterface
+     */
+    startAccountTransactionsSyncRaw(requestParameters: StartAccountTransactionsSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+
+    /**
+     * Start account transactions sync
+     */
+    startAccountTransactionsSync(requestParameters: StartAccountTransactionsSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
 }
 
@@ -58,7 +80,7 @@ export class AccountsApi extends runtime.BaseAPI implements AccountsApiInterface
     /**
      * Find all accounts for a given item
      */
-    async findAllAccountsRaw(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AccountEntity>>> {
+    async findAllAccountsRaw(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<RawAccountEntity>>> {
         if (requestParameters['itemId'] == null) {
             throw new runtime.RequiredError(
                 'itemId',
@@ -77,15 +99,50 @@ export class AccountsApi extends runtime.BaseAPI implements AccountsApiInterface
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(AccountEntityFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(RawAccountEntityFromJSON));
     }
 
     /**
      * Find all accounts for a given item
      */
-    async findAllAccounts(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AccountEntity>> {
+    async findAllAccounts(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<RawAccountEntity>> {
         const response = await this.findAllAccountsRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+
+    /**
+     * Start account transactions sync
+     */
+    async startAccountTransactionsSyncRaw(requestParameters: StartAccountTransactionsSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters['onBankAccountCreatedPayload'] == null) {
+            throw new runtime.RequiredError(
+                'onBankAccountCreatedPayload',
+                'Required parameter "onBankAccountCreatedPayload" was null or undefined when calling startAccountTransactionsSync().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/internal/open-finance/accounts/on/bank-account-created`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: OnBankAccountCreatedPayloadToJSON(requestParameters['onBankAccountCreatedPayload']),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Start account transactions sync
+     */
+    async startAccountTransactionsSync(requestParameters: StartAccountTransactionsSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.startAccountTransactionsSyncRaw(requestParameters, initOverrides);
     }
 
 }

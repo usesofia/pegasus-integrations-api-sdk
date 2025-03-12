@@ -10,9 +10,12 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AccountEntity } from '../models/index';
+import type { OnBankAccountCreatedPayload, RawAccountEntity } from '../models/index';
 export interface FindAllAccountsRequest {
     itemId: string;
+}
+export interface StartAccountTransactionsSyncRequest {
+    onBankAccountCreatedPayload: OnBankAccountCreatedPayload;
 }
 /**
  * AccountsApi - interface
@@ -29,11 +32,24 @@ export interface AccountsApiInterface {
      * @throws {RequiredError}
      * @memberof AccountsApiInterface
      */
-    findAllAccountsRaw(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AccountEntity>>>;
+    findAllAccountsRaw(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<RawAccountEntity>>>;
     /**
      * Find all accounts for a given item
      */
-    findAllAccounts(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AccountEntity>>;
+    findAllAccounts(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<RawAccountEntity>>;
+    /**
+     *
+     * @summary Start account transactions sync
+     * @param {OnBankAccountCreatedPayload} onBankAccountCreatedPayload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccountsApiInterface
+     */
+    startAccountTransactionsSyncRaw(requestParameters: StartAccountTransactionsSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * Start account transactions sync
+     */
+    startAccountTransactionsSync(requestParameters: StartAccountTransactionsSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 }
 /**
  *
@@ -42,9 +58,17 @@ export declare class AccountsApi extends runtime.BaseAPI implements AccountsApiI
     /**
      * Find all accounts for a given item
      */
-    findAllAccountsRaw(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AccountEntity>>>;
+    findAllAccountsRaw(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<RawAccountEntity>>>;
     /**
      * Find all accounts for a given item
      */
-    findAllAccounts(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AccountEntity>>;
+    findAllAccounts(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<RawAccountEntity>>;
+    /**
+     * Start account transactions sync
+     */
+    startAccountTransactionsSyncRaw(requestParameters: StartAccountTransactionsSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * Start account transactions sync
+     */
+    startAccountTransactionsSync(requestParameters: StartAccountTransactionsSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 }

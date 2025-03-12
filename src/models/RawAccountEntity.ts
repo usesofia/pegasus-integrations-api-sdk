@@ -13,108 +13,108 @@
  */
 
 import { mapValues } from '../runtime';
-import type { AccountEntityConnector } from './AccountEntityConnector';
+import type { RawAccountEntityConnector } from './RawAccountEntityConnector';
 import {
-    AccountEntityConnectorFromJSON,
-    AccountEntityConnectorFromJSONTyped,
-    AccountEntityConnectorToJSON,
-    AccountEntityConnectorToJSONTyped,
-} from './AccountEntityConnector';
+    RawAccountEntityConnectorFromJSON,
+    RawAccountEntityConnectorFromJSONTyped,
+    RawAccountEntityConnectorToJSON,
+    RawAccountEntityConnectorToJSONTyped,
+} from './RawAccountEntityConnector';
 
 /**
  * 
  * @export
- * @interface AccountEntity
+ * @interface RawAccountEntity
  */
-export interface AccountEntity {
+export interface RawAccountEntity {
     /**
      * 
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
-    provider: AccountEntityProviderEnum;
+    provider: RawAccountEntityProviderEnum;
     /**
      * 
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
     id: string;
     /**
      * 
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
-    type: AccountEntityTypeEnum;
+    type: RawAccountEntityTypeEnum;
     /**
      * 
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
-    subtype: AccountEntitySubtypeEnum;
+    subtype: RawAccountEntitySubtypeEnum;
     /**
      * 
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
     number: string;
     /**
      * 
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
     name: string;
     /**
      * 
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
     balance: string;
     /**
      * 
      * @type {string}
-     * @memberof AccountEntity
+     * @memberof RawAccountEntity
      */
-    currencyCode: AccountEntityCurrencyCodeEnum;
+    currencyCode: RawAccountEntityCurrencyCodeEnum;
     /**
      * 
-     * @type {AccountEntityConnector}
-     * @memberof AccountEntity
+     * @type {RawAccountEntityConnector}
+     * @memberof RawAccountEntity
      */
-    connector: AccountEntityConnector;
+    connector: RawAccountEntityConnector;
 }
 
 
 /**
  * @export
  */
-export const AccountEntityProviderEnum = {
+export const RawAccountEntityProviderEnum = {
     Pluggy: 'PLUGGY'
 } as const;
-export type AccountEntityProviderEnum = typeof AccountEntityProviderEnum[keyof typeof AccountEntityProviderEnum];
+export type RawAccountEntityProviderEnum = typeof RawAccountEntityProviderEnum[keyof typeof RawAccountEntityProviderEnum];
 
 /**
  * @export
  */
-export const AccountEntityTypeEnum = {
+export const RawAccountEntityTypeEnum = {
     Bank: 'BANK',
     Credit: 'CREDIT'
 } as const;
-export type AccountEntityTypeEnum = typeof AccountEntityTypeEnum[keyof typeof AccountEntityTypeEnum];
+export type RawAccountEntityTypeEnum = typeof RawAccountEntityTypeEnum[keyof typeof RawAccountEntityTypeEnum];
 
 /**
  * @export
  */
-export const AccountEntitySubtypeEnum = {
+export const RawAccountEntitySubtypeEnum = {
     CheckingAccount: 'CHECKING_ACCOUNT',
     SavingsAccount: 'SAVINGS_ACCOUNT',
     CreditCard: 'CREDIT_CARD'
 } as const;
-export type AccountEntitySubtypeEnum = typeof AccountEntitySubtypeEnum[keyof typeof AccountEntitySubtypeEnum];
+export type RawAccountEntitySubtypeEnum = typeof RawAccountEntitySubtypeEnum[keyof typeof RawAccountEntitySubtypeEnum];
 
 /**
  * @export
  */
-export const AccountEntityCurrencyCodeEnum = {
+export const RawAccountEntityCurrencyCodeEnum = {
     Aed: 'AED',
     Afn: 'AFN',
     All: 'ALL',
@@ -295,13 +295,13 @@ export const AccountEntityCurrencyCodeEnum = {
     Zmw: 'ZMW',
     Zwl: 'ZWL'
 } as const;
-export type AccountEntityCurrencyCodeEnum = typeof AccountEntityCurrencyCodeEnum[keyof typeof AccountEntityCurrencyCodeEnum];
+export type RawAccountEntityCurrencyCodeEnum = typeof RawAccountEntityCurrencyCodeEnum[keyof typeof RawAccountEntityCurrencyCodeEnum];
 
 
 /**
- * Check if a given object implements the AccountEntity interface.
+ * Check if a given object implements the RawAccountEntity interface.
  */
-export function instanceOfAccountEntity(value: object): value is AccountEntity {
+export function instanceOfRawAccountEntity(value: object): value is RawAccountEntity {
     if (!('provider' in value) || value['provider'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
@@ -314,11 +314,11 @@ export function instanceOfAccountEntity(value: object): value is AccountEntity {
     return true;
 }
 
-export function AccountEntityFromJSON(json: any): AccountEntity {
-    return AccountEntityFromJSONTyped(json, false);
+export function RawAccountEntityFromJSON(json: any): RawAccountEntity {
+    return RawAccountEntityFromJSONTyped(json, false);
 }
 
-export function AccountEntityFromJSONTyped(json: any, ignoreDiscriminator: boolean): AccountEntity {
+export function RawAccountEntityFromJSONTyped(json: any, ignoreDiscriminator: boolean): RawAccountEntity {
     if (json == null) {
         return json;
     }
@@ -332,15 +332,15 @@ export function AccountEntityFromJSONTyped(json: any, ignoreDiscriminator: boole
         'name': json['name'],
         'balance': json['balance'],
         'currencyCode': json['currencyCode'],
-        'connector': AccountEntityConnectorFromJSON(json['connector']),
+        'connector': RawAccountEntityConnectorFromJSON(json['connector']),
     };
 }
 
-export function AccountEntityToJSON(json: any): AccountEntity {
-    return AccountEntityToJSONTyped(json, false);
+export function RawAccountEntityToJSON(json: any): RawAccountEntity {
+    return RawAccountEntityToJSONTyped(json, false);
 }
 
-export function AccountEntityToJSONTyped(value?: AccountEntity | null, ignoreDiscriminator: boolean = false): any {
+export function RawAccountEntityToJSONTyped(value?: RawAccountEntity | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
@@ -355,7 +355,7 @@ export function AccountEntityToJSONTyped(value?: AccountEntity | null, ignoreDis
         'name': value['name'],
         'balance': value['balance'],
         'currencyCode': value['currencyCode'],
-        'connector': AccountEntityConnectorToJSON(value['connector']),
+        'connector': RawAccountEntityConnectorToJSON(value['connector']),
     };
 }
 

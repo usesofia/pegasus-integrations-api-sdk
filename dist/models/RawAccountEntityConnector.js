@@ -13,15 +13,15 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.instanceOfAccountEntityConnector = instanceOfAccountEntityConnector;
-exports.AccountEntityConnectorFromJSON = AccountEntityConnectorFromJSON;
-exports.AccountEntityConnectorFromJSONTyped = AccountEntityConnectorFromJSONTyped;
-exports.AccountEntityConnectorToJSON = AccountEntityConnectorToJSON;
-exports.AccountEntityConnectorToJSONTyped = AccountEntityConnectorToJSONTyped;
+exports.instanceOfRawAccountEntityConnector = instanceOfRawAccountEntityConnector;
+exports.RawAccountEntityConnectorFromJSON = RawAccountEntityConnectorFromJSON;
+exports.RawAccountEntityConnectorFromJSONTyped = RawAccountEntityConnectorFromJSONTyped;
+exports.RawAccountEntityConnectorToJSON = RawAccountEntityConnectorToJSON;
+exports.RawAccountEntityConnectorToJSONTyped = RawAccountEntityConnectorToJSONTyped;
 /**
- * Check if a given object implements the AccountEntityConnector interface.
+ * Check if a given object implements the RawAccountEntityConnector interface.
  */
-function instanceOfAccountEntityConnector(value) {
+function instanceOfRawAccountEntityConnector(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
     if (!('name' in value) || value['name'] === undefined)
@@ -34,10 +34,10 @@ function instanceOfAccountEntityConnector(value) {
         return false;
     return true;
 }
-function AccountEntityConnectorFromJSON(json) {
-    return AccountEntityConnectorFromJSONTyped(json, false);
+function RawAccountEntityConnectorFromJSON(json) {
+    return RawAccountEntityConnectorFromJSONTyped(json, false);
 }
-function AccountEntityConnectorFromJSONTyped(json, ignoreDiscriminator) {
+function RawAccountEntityConnectorFromJSONTyped(json, ignoreDiscriminator) {
     if (json == null) {
         return json;
     }
@@ -49,10 +49,10 @@ function AccountEntityConnectorFromJSONTyped(json, ignoreDiscriminator) {
         'primaryColor': json['primaryColor'],
     };
 }
-function AccountEntityConnectorToJSON(json) {
-    return AccountEntityConnectorToJSONTyped(json, false);
+function RawAccountEntityConnectorToJSON(json) {
+    return RawAccountEntityConnectorToJSONTyped(json, false);
 }
-function AccountEntityConnectorToJSONTyped(value, ignoreDiscriminator) {
+function RawAccountEntityConnectorToJSONTyped(value, ignoreDiscriminator) {
     if (ignoreDiscriminator === void 0) { ignoreDiscriminator = false; }
     if (value == null) {
         return value;

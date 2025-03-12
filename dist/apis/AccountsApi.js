@@ -97,7 +97,7 @@ var AccountsApi = /** @class */ (function (_super) {
                             }, initOverrides)];
                     case 1:
                         response = _a.sent();
-                        return [2 /*return*/, new runtime.JSONApiResponse(response, function (jsonValue) { return jsonValue.map(index_1.AccountEntityFromJSON); })];
+                        return [2 /*return*/, new runtime.JSONApiResponse(response, function (jsonValue) { return jsonValue.map(index_1.RawAccountEntityFromJSON); })];
                 }
             });
         });
@@ -115,6 +115,50 @@ var AccountsApi = /** @class */ (function (_super) {
                         response = _a.sent();
                         return [4 /*yield*/, response.value()];
                     case 2: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    /**
+     * Start account transactions sync
+     */
+    AccountsApi.prototype.startAccountTransactionsSyncRaw = function (requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function () {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (requestParameters['onBankAccountCreatedPayload'] == null) {
+                            throw new runtime.RequiredError('onBankAccountCreatedPayload', 'Required parameter "onBankAccountCreatedPayload" was null or undefined when calling startAccountTransactionsSync().');
+                        }
+                        queryParameters = {};
+                        headerParameters = {};
+                        headerParameters['Content-Type'] = 'application/json';
+                        return [4 /*yield*/, this.request({
+                                path: "/internal/open-finance/accounts/on/bank-account-created",
+                                method: 'POST',
+                                headers: headerParameters,
+                                query: queryParameters,
+                                body: (0, index_1.OnBankAccountCreatedPayloadToJSON)(requestParameters['onBankAccountCreatedPayload']),
+                            }, initOverrides)];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, new runtime.VoidApiResponse(response)];
+                }
+            });
+        });
+    };
+    /**
+     * Start account transactions sync
+     */
+    AccountsApi.prototype.startAccountTransactionsSync = function (requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.startAccountTransactionsSyncRaw(requestParameters, initOverrides)];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
                 }
             });
         });

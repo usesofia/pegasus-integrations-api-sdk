@@ -13,30 +13,30 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AccountEntityCurrencyCodeEnum = exports.AccountEntitySubtypeEnum = exports.AccountEntityTypeEnum = exports.AccountEntityProviderEnum = void 0;
-exports.instanceOfAccountEntity = instanceOfAccountEntity;
-exports.AccountEntityFromJSON = AccountEntityFromJSON;
-exports.AccountEntityFromJSONTyped = AccountEntityFromJSONTyped;
-exports.AccountEntityToJSON = AccountEntityToJSON;
-exports.AccountEntityToJSONTyped = AccountEntityToJSONTyped;
-var AccountEntityConnector_1 = require("./AccountEntityConnector");
+exports.RawAccountEntityCurrencyCodeEnum = exports.RawAccountEntitySubtypeEnum = exports.RawAccountEntityTypeEnum = exports.RawAccountEntityProviderEnum = void 0;
+exports.instanceOfRawAccountEntity = instanceOfRawAccountEntity;
+exports.RawAccountEntityFromJSON = RawAccountEntityFromJSON;
+exports.RawAccountEntityFromJSONTyped = RawAccountEntityFromJSONTyped;
+exports.RawAccountEntityToJSON = RawAccountEntityToJSON;
+exports.RawAccountEntityToJSONTyped = RawAccountEntityToJSONTyped;
+var RawAccountEntityConnector_1 = require("./RawAccountEntityConnector");
 /**
  * @export
  */
-exports.AccountEntityProviderEnum = {
+exports.RawAccountEntityProviderEnum = {
     Pluggy: 'PLUGGY'
 };
 /**
  * @export
  */
-exports.AccountEntityTypeEnum = {
+exports.RawAccountEntityTypeEnum = {
     Bank: 'BANK',
     Credit: 'CREDIT'
 };
 /**
  * @export
  */
-exports.AccountEntitySubtypeEnum = {
+exports.RawAccountEntitySubtypeEnum = {
     CheckingAccount: 'CHECKING_ACCOUNT',
     SavingsAccount: 'SAVINGS_ACCOUNT',
     CreditCard: 'CREDIT_CARD'
@@ -44,7 +44,7 @@ exports.AccountEntitySubtypeEnum = {
 /**
  * @export
  */
-exports.AccountEntityCurrencyCodeEnum = {
+exports.RawAccountEntityCurrencyCodeEnum = {
     Aed: 'AED',
     Afn: 'AFN',
     All: 'ALL',
@@ -226,9 +226,9 @@ exports.AccountEntityCurrencyCodeEnum = {
     Zwl: 'ZWL'
 };
 /**
- * Check if a given object implements the AccountEntity interface.
+ * Check if a given object implements the RawAccountEntity interface.
  */
-function instanceOfAccountEntity(value) {
+function instanceOfRawAccountEntity(value) {
     if (!('provider' in value) || value['provider'] === undefined)
         return false;
     if (!('id' in value) || value['id'] === undefined)
@@ -249,10 +249,10 @@ function instanceOfAccountEntity(value) {
         return false;
     return true;
 }
-function AccountEntityFromJSON(json) {
-    return AccountEntityFromJSONTyped(json, false);
+function RawAccountEntityFromJSON(json) {
+    return RawAccountEntityFromJSONTyped(json, false);
 }
-function AccountEntityFromJSONTyped(json, ignoreDiscriminator) {
+function RawAccountEntityFromJSONTyped(json, ignoreDiscriminator) {
     if (json == null) {
         return json;
     }
@@ -265,13 +265,13 @@ function AccountEntityFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'],
         'balance': json['balance'],
         'currencyCode': json['currencyCode'],
-        'connector': (0, AccountEntityConnector_1.AccountEntityConnectorFromJSON)(json['connector']),
+        'connector': (0, RawAccountEntityConnector_1.RawAccountEntityConnectorFromJSON)(json['connector']),
     };
 }
-function AccountEntityToJSON(json) {
-    return AccountEntityToJSONTyped(json, false);
+function RawAccountEntityToJSON(json) {
+    return RawAccountEntityToJSONTyped(json, false);
 }
-function AccountEntityToJSONTyped(value, ignoreDiscriminator) {
+function RawAccountEntityToJSONTyped(value, ignoreDiscriminator) {
     if (ignoreDiscriminator === void 0) { ignoreDiscriminator = false; }
     if (value == null) {
         return value;
@@ -285,6 +285,6 @@ function AccountEntityToJSONTyped(value, ignoreDiscriminator) {
         'name': value['name'],
         'balance': value['balance'],
         'currencyCode': value['currencyCode'],
-        'connector': (0, AccountEntityConnector_1.AccountEntityConnectorToJSON)(value['connector']),
+        'connector': (0, RawAccountEntityConnector_1.RawAccountEntityConnectorToJSON)(value['connector']),
     };
 }
