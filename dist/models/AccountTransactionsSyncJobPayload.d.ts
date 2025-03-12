@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { OnBankAccountCreatedPayloadRequester } from './OnBankAccountCreatedPayloadRequester';
 /**
  *
  * @export
@@ -17,10 +18,10 @@
 export interface AccountTransactionsSyncJobPayload {
     /**
      *
-     * @type {any}
+     * @type {OnBankAccountCreatedPayloadRequester}
      * @memberof AccountTransactionsSyncJobPayload
      */
-    requester: any | null;
+    requester: OnBankAccountCreatedPayloadRequester;
     /**
      *
      * @type {string}

@@ -18,6 +18,7 @@ exports.AccountTransactionsSyncJobPayloadFromJSON = AccountTransactionsSyncJobPa
 exports.AccountTransactionsSyncJobPayloadFromJSONTyped = AccountTransactionsSyncJobPayloadFromJSONTyped;
 exports.AccountTransactionsSyncJobPayloadToJSON = AccountTransactionsSyncJobPayloadToJSON;
 exports.AccountTransactionsSyncJobPayloadToJSONTyped = AccountTransactionsSyncJobPayloadToJSONTyped;
+var OnBankAccountCreatedPayloadRequester_1 = require("./OnBankAccountCreatedPayloadRequester");
 /**
  * Check if a given object implements the AccountTransactionsSyncJobPayload interface.
  */
@@ -36,7 +37,7 @@ function AccountTransactionsSyncJobPayloadFromJSONTyped(json, ignoreDiscriminato
         return json;
     }
     return {
-        'requester': json['requester'],
+        'requester': (0, OnBankAccountCreatedPayloadRequester_1.OnBankAccountCreatedPayloadRequesterFromJSON)(json['requester']),
         'accountTransactionsSyncJobRequestId': json['accountTransactionsSyncJobRequestId'],
     };
 }
@@ -49,7 +50,7 @@ function AccountTransactionsSyncJobPayloadToJSONTyped(value, ignoreDiscriminator
         return value;
     }
     return {
-        'requester': value['requester'],
+        'requester': (0, OnBankAccountCreatedPayloadRequester_1.OnBankAccountCreatedPayloadRequesterToJSON)(value['requester']),
         'accountTransactionsSyncJobRequestId': value['accountTransactionsSyncJobRequestId'],
     };
 }

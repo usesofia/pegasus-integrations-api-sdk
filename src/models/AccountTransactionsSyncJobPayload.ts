@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { OnBankAccountCreatedPayloadRequester } from './OnBankAccountCreatedPayloadRequester';
+import {
+    OnBankAccountCreatedPayloadRequesterFromJSON,
+    OnBankAccountCreatedPayloadRequesterFromJSONTyped,
+    OnBankAccountCreatedPayloadRequesterToJSON,
+    OnBankAccountCreatedPayloadRequesterToJSONTyped,
+} from './OnBankAccountCreatedPayloadRequester';
+
 /**
  * 
  * @export
@@ -21,10 +29,10 @@ import { mapValues } from '../runtime';
 export interface AccountTransactionsSyncJobPayload {
     /**
      * 
-     * @type {any}
+     * @type {OnBankAccountCreatedPayloadRequester}
      * @memberof AccountTransactionsSyncJobPayload
      */
-    requester: any | null;
+    requester: OnBankAccountCreatedPayloadRequester;
     /**
      * 
      * @type {string}
@@ -52,7 +60,7 @@ export function AccountTransactionsSyncJobPayloadFromJSONTyped(json: any, ignore
     }
     return {
         
-        'requester': json['requester'],
+        'requester': OnBankAccountCreatedPayloadRequesterFromJSON(json['requester']),
         'accountTransactionsSyncJobRequestId': json['accountTransactionsSyncJobRequestId'],
     };
 }
@@ -68,7 +76,7 @@ export function AccountTransactionsSyncJobPayloadToJSONTyped(value?: AccountTran
 
     return {
         
-        'requester': value['requester'],
+        'requester': OnBankAccountCreatedPayloadRequesterToJSON(value['requester']),
         'accountTransactionsSyncJobRequestId': value['accountTransactionsSyncJobRequestId'],
     };
 }
