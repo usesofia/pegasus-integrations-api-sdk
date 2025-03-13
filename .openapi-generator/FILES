@@ -6,8 +6,10 @@ src/apis/AccountsApi.ts
 src/apis/CacheApi.ts
 src/apis/HealthApi.ts
 src/apis/PluggyApi.ts
+src/apis/TransactionsApi.ts
 src/apis/index.ts
 src/index.ts
+src/models/AccountTransactionPageSyncJobPayload.ts
 src/models/AccountTransactionsSyncJobPayload.ts
 src/models/CacheGetResponseDto.ts
 src/models/CacheSetDto.ts

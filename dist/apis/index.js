@@ -20,3 +20,4 @@ __exportStar(require("./AccountsApi"), exports);
 __exportStar(require("./CacheApi"), exports);
 __exportStar(require("./HealthApi"), exports);
 __exportStar(require("./PluggyApi"), exports);
+__exportStar(require("./TransactionsApi"), exports);
