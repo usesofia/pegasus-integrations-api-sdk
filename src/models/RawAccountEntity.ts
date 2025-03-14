@@ -88,7 +88,8 @@ export interface RawAccountEntity {
  * @export
  */
 export const RawAccountEntityProviderEnum = {
-    Pluggy: 'PLUGGY'
+    Pluggy: 'PLUGGY',
+    Other: 'OTHER'
 } as const;
 export type RawAccountEntityProviderEnum = typeof RawAccountEntityProviderEnum[keyof typeof RawAccountEntityProviderEnum];
 

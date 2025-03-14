@@ -76,6 +76,7 @@ export interface RawAccountEntity {
  */
 export declare const RawAccountEntityProviderEnum: {
     readonly Pluggy: "PLUGGY";
+    readonly Other: "OTHER";
 };
 export type RawAccountEntityProviderEnum = typeof RawAccountEntityProviderEnum[keyof typeof RawAccountEntityProviderEnum];
 /**

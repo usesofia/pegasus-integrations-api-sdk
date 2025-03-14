@@ -24,7 +24,8 @@ var RawAccountEntityConnector_1 = require("./RawAccountEntityConnector");
  * @export
  */
 exports.RawAccountEntityProviderEnum = {
-    Pluggy: 'PLUGGY'
+    Pluggy: 'PLUGGY',
+    Other: 'OTHER'
 };
 /**
  * @export
