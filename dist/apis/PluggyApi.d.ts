@@ -10,9 +10,12 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateConnectTokenRequestBodyDto, CreateConnectTokenResponseBodyDto } from '../models/index';
+import type { CreateConnectTokenRequestBodyDto, CreateConnectTokenResponseBodyDto, PluggyWebhookRequestBodyDto } from '../models/index';
 export interface CreateConnectTokenRequest {
     createConnectTokenRequestBodyDto: CreateConnectTokenRequestBodyDto;
+}
+export interface WebhookRequest {
+    pluggyWebhookRequestBodyDto: PluggyWebhookRequestBodyDto;
 }
 /**
  * PluggyApi - interface
@@ -34,6 +37,19 @@ export interface PluggyApiInterface {
      * Create a connect token
      */
     createConnectToken(requestParameters: CreateConnectTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto>;
+    /**
+     *
+     * @summary Pluggy webhook endpoint to receive event notifications
+     * @param {PluggyWebhookRequestBodyDto} pluggyWebhookRequestBodyDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PluggyApiInterface
+     */
+    webhookRaw(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * Pluggy webhook endpoint to receive event notifications
+     */
+    webhook(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 }
 /**
  *
@@ -47,4 +63,12 @@ export declare class PluggyApi extends runtime.BaseAPI implements PluggyApiInter
      * Create a connect token
      */
     createConnectToken(requestParameters: CreateConnectTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto>;
+    /**
+     * Pluggy webhook endpoint to receive event notifications
+     */
+    webhookRaw(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     * Pluggy webhook endpoint to receive event notifications
+     */
+    webhook(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 }

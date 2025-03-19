@@ -18,6 +18,7 @@ import type {
   CreateConnectTokenRequestBodyDto,
   CreateConnectTokenResponseBodyDto,
   ExceptionResponseEntity,
+  PluggyWebhookRequestBodyDto,
 } from '../models/index';
 import {
     CreateConnectTokenRequestBodyDtoFromJSON,
@@ -26,10 +27,16 @@ import {
     CreateConnectTokenResponseBodyDtoToJSON,
     ExceptionResponseEntityFromJSON,
     ExceptionResponseEntityToJSON,
+    PluggyWebhookRequestBodyDtoFromJSON,
+    PluggyWebhookRequestBodyDtoToJSON,
 } from '../models/index';
 
 export interface CreateConnectTokenRequest {
     createConnectTokenRequestBodyDto: CreateConnectTokenRequestBodyDto;
+}
+
+export interface WebhookRequest {
+    pluggyWebhookRequestBodyDto: PluggyWebhookRequestBodyDto;
 }
 
 /**
@@ -53,6 +60,21 @@ export interface PluggyApiInterface {
      * Create a connect token
      */
     createConnectToken(requestParameters: CreateConnectTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto>;
+
+    /**
+     * 
+     * @summary Pluggy webhook endpoint to receive event notifications
+     * @param {PluggyWebhookRequestBodyDto} pluggyWebhookRequestBodyDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PluggyApiInterface
+     */
+    webhookRaw(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+
+    /**
+     * Pluggy webhook endpoint to receive event notifications
+     */
+    webhook(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
 }
 
@@ -95,6 +117,41 @@ export class PluggyApi extends runtime.BaseAPI implements PluggyApiInterface {
     async createConnectToken(requestParameters: CreateConnectTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateConnectTokenResponseBodyDto> {
         const response = await this.createConnectTokenRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+
+    /**
+     * Pluggy webhook endpoint to receive event notifications
+     */
+    async webhookRaw(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters['pluggyWebhookRequestBodyDto'] == null) {
+            throw new runtime.RequiredError(
+                'pluggyWebhookRequestBodyDto',
+                'Required parameter "pluggyWebhookRequestBodyDto" was null or undefined when calling webhook().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/external/open-finance/pluggy/webhook`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PluggyWebhookRequestBodyDtoToJSON(requestParameters['pluggyWebhookRequestBodyDto']),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Pluggy webhook endpoint to receive event notifications
+     */
+    async webhook(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.webhookRaw(requestParameters, initOverrides);
     }
 
 }

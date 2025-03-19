@@ -13,5 +13,7 @@ export * from './OnBankAccountCreatedPayloadRequester';
 export * from './OnBankAccountCreatedPayloadRequesterOrganization';
 export * from './OnBankAccountCreatedPayloadRequesterOrganizationChildrenInner';
 export * from './OnBankAccountCreatedPayloadRequesterOrganizationParent';
+export * from './PluggyWebhookRequestBodyDto';
+export * from './PluggyWebhookRequestBodyDtoError';
 export * from './RawAccountEntity';
 export * from './RawAccountEntityConnector';

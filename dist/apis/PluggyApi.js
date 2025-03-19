@@ -121,6 +121,50 @@ var PluggyApi = /** @class */ (function (_super) {
             });
         });
     };
+    /**
+     * Pluggy webhook endpoint to receive event notifications
+     */
+    PluggyApi.prototype.webhookRaw = function (requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function () {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (requestParameters['pluggyWebhookRequestBodyDto'] == null) {
+                            throw new runtime.RequiredError('pluggyWebhookRequestBodyDto', 'Required parameter "pluggyWebhookRequestBodyDto" was null or undefined when calling webhook().');
+                        }
+                        queryParameters = {};
+                        headerParameters = {};
+                        headerParameters['Content-Type'] = 'application/json';
+                        return [4 /*yield*/, this.request({
+                                path: "/external/open-finance/pluggy/webhook",
+                                method: 'POST',
+                                headers: headerParameters,
+                                query: queryParameters,
+                                body: (0, index_1.PluggyWebhookRequestBodyDtoToJSON)(requestParameters['pluggyWebhookRequestBodyDto']),
+                            }, initOverrides)];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, new runtime.VoidApiResponse(response)];
+                }
+            });
+        });
+    };
+    /**
+     * Pluggy webhook endpoint to receive event notifications
+     */
+    PluggyApi.prototype.webhook = function (requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.webhookRaw(requestParameters, initOverrides)];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     return PluggyApi;
 }(runtime.BaseAPI));
 exports.PluggyApi = PluggyApi;

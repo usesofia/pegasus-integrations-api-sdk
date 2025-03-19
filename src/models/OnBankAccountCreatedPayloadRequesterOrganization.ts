@@ -51,13 +51,13 @@ export interface OnBankAccountCreatedPayloadRequesterOrganization {
      * @type {string}
      * @memberof OnBankAccountCreatedPayloadRequesterOrganization
      */
-    role: OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum;
+    type: OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum;
     /**
      * 
      * @type {string}
      * @memberof OnBankAccountCreatedPayloadRequesterOrganization
      */
-    type: OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum;
+    role: OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum;
     /**
      * 
      * @type {OnBankAccountCreatedPayloadRequesterOrganizationParent}
@@ -76,20 +76,20 @@ export interface OnBankAccountCreatedPayloadRequesterOrganization {
 /**
  * @export
  */
-export const OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum = {
-    OrgAdmin: 'org:admin',
-    OrgMember: 'org:member'
-} as const;
-export type OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum = typeof OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum[keyof typeof OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum];
-
-/**
- * @export
- */
 export const OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum = {
     Leaf: 'LEAF',
     Group: 'GROUP'
 } as const;
 export type OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum = typeof OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum[keyof typeof OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum];
+
+/**
+ * @export
+ */
+export const OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum = {
+    OrgAdmin: 'org:admin',
+    OrgMember: 'org:member'
+} as const;
+export type OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum = typeof OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum[keyof typeof OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum];
 
 
 /**
@@ -98,8 +98,8 @@ export type OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum = typeof On
 export function instanceOfOnBankAccountCreatedPayloadRequesterOrganization(value: object): value is OnBankAccountCreatedPayloadRequesterOrganization {
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
-    if (!('role' in value) || value['role'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
+    if (!('role' in value) || value['role'] === undefined) return false;
     return true;
 }
 
@@ -115,8 +115,8 @@ export function OnBankAccountCreatedPayloadRequesterOrganizationFromJSONTyped(js
         
         'id': json['id'],
         'name': json['name'],
-        'role': json['role'],
         'type': json['type'],
+        'role': json['role'],
         'parent': json['parent'] == null ? undefined : OnBankAccountCreatedPayloadRequesterOrganizationParentFromJSON(json['parent']),
         'children': json['children'] == null ? undefined : ((json['children'] as Array<any>).map(OnBankAccountCreatedPayloadRequesterOrganizationChildrenInnerFromJSON)),
     };
@@ -135,8 +135,8 @@ export function OnBankAccountCreatedPayloadRequesterOrganizationToJSONTyped(valu
         
         'id': value['id'],
         'name': value['name'],
-        'role': value['role'],
         'type': value['type'],
+        'role': value['role'],
         'parent': OnBankAccountCreatedPayloadRequesterOrganizationParentToJSON(value['parent']),
         'children': value['children'] == null ? undefined : ((value['children'] as Array<any>).map(OnBankAccountCreatedPayloadRequesterOrganizationChildrenInnerToJSON)),
     };

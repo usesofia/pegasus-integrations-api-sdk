@@ -31,5 +31,7 @@ __exportStar(require("./OnBankAccountCreatedPayloadRequester"), exports);
 __exportStar(require("./OnBankAccountCreatedPayloadRequesterOrganization"), exports);
 __exportStar(require("./OnBankAccountCreatedPayloadRequesterOrganizationChildrenInner"), exports);
 __exportStar(require("./OnBankAccountCreatedPayloadRequesterOrganizationParent"), exports);
+__exportStar(require("./PluggyWebhookRequestBodyDto"), exports);
+__exportStar(require("./PluggyWebhookRequestBodyDtoError"), exports);
 __exportStar(require("./RawAccountEntity"), exports);
 __exportStar(require("./RawAccountEntityConnector"), exports);

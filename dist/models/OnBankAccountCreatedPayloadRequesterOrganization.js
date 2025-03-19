@@ -13,7 +13,7 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum = exports.OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum = void 0;
+exports.OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum = exports.OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum = void 0;
 exports.instanceOfOnBankAccountCreatedPayloadRequesterOrganization = instanceOfOnBankAccountCreatedPayloadRequesterOrganization;
 exports.OnBankAccountCreatedPayloadRequesterOrganizationFromJSON = OnBankAccountCreatedPayloadRequesterOrganizationFromJSON;
 exports.OnBankAccountCreatedPayloadRequesterOrganizationFromJSONTyped = OnBankAccountCreatedPayloadRequesterOrganizationFromJSONTyped;
@@ -24,16 +24,16 @@ var OnBankAccountCreatedPayloadRequesterOrganizationParent_1 = require("./OnBank
 /**
  * @export
  */
-exports.OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum = {
-    OrgAdmin: 'org:admin',
-    OrgMember: 'org:member'
+exports.OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum = {
+    Leaf: 'LEAF',
+    Group: 'GROUP'
 };
 /**
  * @export
  */
-exports.OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum = {
-    Leaf: 'LEAF',
-    Group: 'GROUP'
+exports.OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum = {
+    OrgAdmin: 'org:admin',
+    OrgMember: 'org:member'
 };
 /**
  * Check if a given object implements the OnBankAccountCreatedPayloadRequesterOrganization interface.
@@ -43,9 +43,9 @@ function instanceOfOnBankAccountCreatedPayloadRequesterOrganization(value) {
         return false;
     if (!('name' in value) || value['name'] === undefined)
         return false;
-    if (!('role' in value) || value['role'] === undefined)
-        return false;
     if (!('type' in value) || value['type'] === undefined)
+        return false;
+    if (!('role' in value) || value['role'] === undefined)
         return false;
     return true;
 }
@@ -59,8 +59,8 @@ function OnBankAccountCreatedPayloadRequesterOrganizationFromJSONTyped(json, ign
     return {
         'id': json['id'],
         'name': json['name'],
-        'role': json['role'],
         'type': json['type'],
+        'role': json['role'],
         'parent': json['parent'] == null ? undefined : (0, OnBankAccountCreatedPayloadRequesterOrganizationParent_1.OnBankAccountCreatedPayloadRequesterOrganizationParentFromJSON)(json['parent']),
         'children': json['children'] == null ? undefined : (json['children'].map(OnBankAccountCreatedPayloadRequesterOrganizationChildrenInner_1.OnBankAccountCreatedPayloadRequesterOrganizationChildrenInnerFromJSON)),
     };
@@ -76,8 +76,8 @@ function OnBankAccountCreatedPayloadRequesterOrganizationToJSONTyped(value, igno
     return {
         'id': value['id'],
         'name': value['name'],
-        'role': value['role'],
         'type': value['type'],
+        'role': value['role'],
         'parent': (0, OnBankAccountCreatedPayloadRequesterOrganizationParent_1.OnBankAccountCreatedPayloadRequesterOrganizationParentToJSON)(value['parent']),
         'children': value['children'] == null ? undefined : (value['children'].map(OnBankAccountCreatedPayloadRequesterOrganizationChildrenInner_1.OnBankAccountCreatedPayloadRequesterOrganizationChildrenInnerToJSON)),
     };

@@ -34,13 +34,13 @@ export interface OnBankAccountCreatedPayloadRequesterOrganization {
      * @type {string}
      * @memberof OnBankAccountCreatedPayloadRequesterOrganization
      */
-    role: OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum;
+    type: OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum;
     /**
      *
      * @type {string}
      * @memberof OnBankAccountCreatedPayloadRequesterOrganization
      */
-    type: OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum;
+    role: OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum;
     /**
      *
      * @type {OnBankAccountCreatedPayloadRequesterOrganizationParent}
@@ -57,19 +57,19 @@ export interface OnBankAccountCreatedPayloadRequesterOrganization {
 /**
  * @export
  */
-export declare const OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum: {
-    readonly OrgAdmin: "org:admin";
-    readonly OrgMember: "org:member";
-};
-export type OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum = typeof OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum[keyof typeof OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum];
-/**
- * @export
- */
 export declare const OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum: {
     readonly Leaf: "LEAF";
     readonly Group: "GROUP";
 };
 export type OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum = typeof OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum[keyof typeof OnBankAccountCreatedPayloadRequesterOrganizationTypeEnum];
+/**
+ * @export
+ */
+export declare const OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum: {
+    readonly OrgAdmin: "org:admin";
+    readonly OrgMember: "org:member";
+};
+export type OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum = typeof OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum[keyof typeof OnBankAccountCreatedPayloadRequesterOrganizationRoleEnum];
 /**
  * Check if a given object implements the OnBankAccountCreatedPayloadRequesterOrganization interface.
  */

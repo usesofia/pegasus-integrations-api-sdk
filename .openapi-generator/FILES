@@ -24,6 +24,8 @@ src/models/OnBankAccountCreatedPayloadRequester.ts
 src/models/OnBankAccountCreatedPayloadRequesterOrganization.ts
 src/models/OnBankAccountCreatedPayloadRequesterOrganizationChildrenInner.ts
 src/models/OnBankAccountCreatedPayloadRequesterOrganizationParent.ts
+src/models/PluggyWebhookRequestBodyDto.ts
+src/models/PluggyWebhookRequestBodyDtoError.ts
 src/models/RawAccountEntity.ts
 src/models/RawAccountEntityConnector.ts
 src/models/index.ts
