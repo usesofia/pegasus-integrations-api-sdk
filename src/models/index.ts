@@ -1,5 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
+export * from './AccountLastSuccessSyncEntity';
+export * from './AccountLastSuccessSyncEntityData';
 export * from './AccountTransactionPageSyncJobPayload';
 export * from './AccountTransactionsSyncJobPayload';
 export * from './CacheGetResponseDto';

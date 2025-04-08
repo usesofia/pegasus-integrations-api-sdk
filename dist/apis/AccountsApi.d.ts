@@ -10,9 +10,12 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AccountTransactionsSyncJobPayload, OnBankAccountCreatedPayload, RawAccountEntity } from '../models/index';
+import type { AccountLastSuccessSyncEntity, AccountTransactionsSyncJobPayload, OnBankAccountCreatedPayload, RawAccountEntity } from '../models/index';
 export interface FindAllAccountsRequest {
     itemId: string;
+}
+export interface GetLastAccountSuccessSyncRequest {
+    accountId: string;
 }
 export interface StartAccountTransactionsSyncRequest {
     onBankAccountCreatedPayload: OnBankAccountCreatedPayload;
@@ -40,6 +43,19 @@ export interface AccountsApiInterface {
      * Find all accounts for a given item
      */
     findAllAccounts(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<RawAccountEntity>>;
+    /**
+     *
+     * @summary Get the last successful sync date for an account
+     * @param {string} accountId The sofia account id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccountsApiInterface
+     */
+    getLastAccountSuccessSyncRaw(requestParameters: GetLastAccountSuccessSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AccountLastSuccessSyncEntity>>;
+    /**
+     * Get the last successful sync date for an account
+     */
+    getLastAccountSuccessSync(requestParameters: GetLastAccountSuccessSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AccountLastSuccessSyncEntity>;
     /**
      *
      * @summary Start account transactions sync
@@ -79,6 +95,14 @@ export declare class AccountsApi extends runtime.BaseAPI implements AccountsApiI
      * Find all accounts for a given item
      */
     findAllAccounts(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<RawAccountEntity>>;
+    /**
+     * Get the last successful sync date for an account
+     */
+    getLastAccountSuccessSyncRaw(requestParameters: GetLastAccountSuccessSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AccountLastSuccessSyncEntity>>;
+    /**
+     * Get the last successful sync date for an account
+     */
+    getLastAccountSuccessSync(requestParameters: GetLastAccountSuccessSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AccountLastSuccessSyncEntity>;
     /**
      * Start account transactions sync
      */

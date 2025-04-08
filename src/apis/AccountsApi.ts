@@ -15,11 +15,14 @@
 
 import * as runtime from '../runtime';
 import type {
+  AccountLastSuccessSyncEntity,
   AccountTransactionsSyncJobPayload,
   OnBankAccountCreatedPayload,
   RawAccountEntity,
 } from '../models/index';
 import {
+    AccountLastSuccessSyncEntityFromJSON,
+    AccountLastSuccessSyncEntityToJSON,
     AccountTransactionsSyncJobPayloadFromJSON,
     AccountTransactionsSyncJobPayloadToJSON,
     OnBankAccountCreatedPayloadFromJSON,
@@ -30,6 +33,10 @@ import {
 
 export interface FindAllAccountsRequest {
     itemId: string;
+}
+
+export interface GetLastAccountSuccessSyncRequest {
+    accountId: string;
 }
 
 export interface StartAccountTransactionsSyncRequest {
@@ -61,6 +68,21 @@ export interface AccountsApiInterface {
      * Find all accounts for a given item
      */
     findAllAccounts(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<RawAccountEntity>>;
+
+    /**
+     * 
+     * @summary Get the last successful sync date for an account
+     * @param {string} accountId The sofia account id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccountsApiInterface
+     */
+    getLastAccountSuccessSyncRaw(requestParameters: GetLastAccountSuccessSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AccountLastSuccessSyncEntity>>;
+
+    /**
+     * Get the last successful sync date for an account
+     */
+    getLastAccountSuccessSync(requestParameters: GetLastAccountSuccessSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AccountLastSuccessSyncEntity>;
 
     /**
      * 
@@ -129,6 +151,39 @@ export class AccountsApi extends runtime.BaseAPI implements AccountsApiInterface
      */
     async findAllAccounts(requestParameters: FindAllAccountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<RawAccountEntity>> {
         const response = await this.findAllAccountsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get the last successful sync date for an account
+     */
+    async getLastAccountSuccessSyncRaw(requestParameters: GetLastAccountSuccessSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AccountLastSuccessSyncEntity>> {
+        if (requestParameters['accountId'] == null) {
+            throw new runtime.RequiredError(
+                'accountId',
+                'Required parameter "accountId" was null or undefined when calling getLastAccountSuccessSync().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/external/open-finance/accounts/{accountId}/last-success-sync`.replace(`{${"accountId"}}`, encodeURIComponent(String(requestParameters['accountId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AccountLastSuccessSyncEntityFromJSON(jsonValue));
+    }
+
+    /**
+     * Get the last successful sync date for an account
+     */
+    async getLastAccountSuccessSync(requestParameters: GetLastAccountSuccessSyncRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AccountLastSuccessSyncEntity> {
+        const response = await this.getLastAccountSuccessSyncRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

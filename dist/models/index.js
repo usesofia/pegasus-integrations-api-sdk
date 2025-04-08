@@ -16,6 +16,8 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 /* tslint:disable */
 /* eslint-disable */
+__exportStar(require("./AccountLastSuccessSyncEntity"), exports);
+__exportStar(require("./AccountLastSuccessSyncEntityData"), exports);
 __exportStar(require("./AccountTransactionPageSyncJobPayload"), exports);
 __exportStar(require("./AccountTransactionsSyncJobPayload"), exports);
 __exportStar(require("./CacheGetResponseDto"), exports);

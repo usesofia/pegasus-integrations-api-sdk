@@ -120,6 +120,50 @@ var AccountsApi = /** @class */ (function (_super) {
         });
     };
     /**
+     * Get the last successful sync date for an account
+     */
+    AccountsApi.prototype.getLastAccountSuccessSyncRaw = function (requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function () {
+            var queryParameters, headerParameters, response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (requestParameters['accountId'] == null) {
+                            throw new runtime.RequiredError('accountId', 'Required parameter "accountId" was null or undefined when calling getLastAccountSuccessSync().');
+                        }
+                        queryParameters = {};
+                        headerParameters = {};
+                        return [4 /*yield*/, this.request({
+                                path: "/external/open-finance/accounts/{accountId}/last-success-sync".replace("{".concat("accountId", "}"), encodeURIComponent(String(requestParameters['accountId']))),
+                                method: 'GET',
+                                headers: headerParameters,
+                                query: queryParameters,
+                            }, initOverrides)];
+                    case 1:
+                        response = _a.sent();
+                        return [2 /*return*/, new runtime.JSONApiResponse(response, function (jsonValue) { return (0, index_1.AccountLastSuccessSyncEntityFromJSON)(jsonValue); })];
+                }
+            });
+        });
+    };
+    /**
+     * Get the last successful sync date for an account
+     */
+    AccountsApi.prototype.getLastAccountSuccessSync = function (requestParameters, initOverrides) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getLastAccountSuccessSyncRaw(requestParameters, initOverrides)];
+                    case 1:
+                        response = _a.sent();
+                        return [4 /*yield*/, response.value()];
+                    case 2: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    /**
      * Start account transactions sync
      */
     AccountsApi.prototype.startAccountTransactionsSyncRaw = function (requestParameters, initOverrides) {

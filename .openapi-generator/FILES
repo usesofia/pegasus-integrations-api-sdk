@@ -9,6 +9,8 @@ src/apis/PluggyApi.ts
 src/apis/TransactionsApi.ts
 src/apis/index.ts
 src/index.ts
+src/models/AccountLastSuccessSyncEntity.ts
+src/models/AccountLastSuccessSyncEntityData.ts
 src/models/AccountTransactionPageSyncJobPayload.ts
 src/models/AccountTransactionsSyncJobPayload.ts
 src/models/CacheGetResponseDto.ts
