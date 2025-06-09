@@ -42,7 +42,7 @@ export interface AccountLastSuccessSyncEntityData {
      * @type {number}
      * @memberof AccountLastSuccessSyncEntityData
      */
-    nTransactions: number;
+    nTotalItems: number;
 }
 
 /**
@@ -52,7 +52,7 @@ export function instanceOfAccountLastSuccessSyncEntityData(value: object): value
     if (!('accountTransactionsSyncJobRequestId' in value) || value['accountTransactionsSyncJobRequestId'] === undefined) return false;
     if (!('accountTransactionsSyncJobExecutionId' in value) || value['accountTransactionsSyncJobExecutionId'] === undefined) return false;
     if (!('finishedAt' in value) || value['finishedAt'] === undefined) return false;
-    if (!('nTransactions' in value) || value['nTransactions'] === undefined) return false;
+    if (!('nTotalItems' in value) || value['nTotalItems'] === undefined) return false;
     return true;
 }
 
@@ -69,7 +69,7 @@ export function AccountLastSuccessSyncEntityDataFromJSONTyped(json: any, ignoreD
         'accountTransactionsSyncJobRequestId': json['accountTransactionsSyncJobRequestId'],
         'accountTransactionsSyncJobExecutionId': json['accountTransactionsSyncJobExecutionId'],
         'finishedAt': json['finishedAt'],
-        'nTransactions': json['nTransactions'],
+        'nTotalItems': json['nTotalItems'],
     };
 }
 
@@ -87,7 +87,7 @@ export function AccountLastSuccessSyncEntityDataToJSONTyped(value?: AccountLastS
         'accountTransactionsSyncJobRequestId': value['accountTransactionsSyncJobRequestId'],
         'accountTransactionsSyncJobExecutionId': value['accountTransactionsSyncJobExecutionId'],
         'finishedAt': value['finishedAt'],
-        'nTransactions': value['nTransactions'],
+        'nTotalItems': value['nTotalItems'],
     };
 }
 

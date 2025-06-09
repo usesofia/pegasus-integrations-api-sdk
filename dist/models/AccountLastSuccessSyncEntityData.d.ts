@@ -38,7 +38,7 @@ export interface AccountLastSuccessSyncEntityData {
      * @type {number}
      * @memberof AccountLastSuccessSyncEntityData
      */
-    nTransactions: number;
+    nTotalItems: number;
 }
 /**
  * Check if a given object implements the AccountLastSuccessSyncEntityData interface.

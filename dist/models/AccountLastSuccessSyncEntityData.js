@@ -28,7 +28,7 @@ function instanceOfAccountLastSuccessSyncEntityData(value) {
         return false;
     if (!('finishedAt' in value) || value['finishedAt'] === undefined)
         return false;
-    if (!('nTransactions' in value) || value['nTransactions'] === undefined)
+    if (!('nTotalItems' in value) || value['nTotalItems'] === undefined)
         return false;
     return true;
 }
@@ -43,7 +43,7 @@ function AccountLastSuccessSyncEntityDataFromJSONTyped(json, ignoreDiscriminator
         'accountTransactionsSyncJobRequestId': json['accountTransactionsSyncJobRequestId'],
         'accountTransactionsSyncJobExecutionId': json['accountTransactionsSyncJobExecutionId'],
         'finishedAt': json['finishedAt'],
-        'nTransactions': json['nTransactions'],
+        'nTotalItems': json['nTotalItems'],
     };
 }
 function AccountLastSuccessSyncEntityDataToJSON(json) {
@@ -58,6 +58,6 @@ function AccountLastSuccessSyncEntityDataToJSONTyped(value, ignoreDiscriminator)
         'accountTransactionsSyncJobRequestId': value['accountTransactionsSyncJobRequestId'],
         'accountTransactionsSyncJobExecutionId': value['accountTransactionsSyncJobExecutionId'],
         'finishedAt': value['finishedAt'],
-        'nTransactions': value['nTransactions'],
+        'nTotalItems': value['nTotalItems'],
     };
 }
