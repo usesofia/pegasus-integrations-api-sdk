@@ -80,7 +80,7 @@ var PluggyApi = /** @class */ (function (_super) {
      */
     PluggyApi.prototype.createConnectTokenRaw = function (requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
-            var queryParameters, headerParameters, response;
+            var queryParameters, headerParameters, urlPath, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -90,8 +90,9 @@ var PluggyApi = /** @class */ (function (_super) {
                         queryParameters = {};
                         headerParameters = {};
                         headerParameters['Content-Type'] = 'application/json';
+                        urlPath = "/external/open-finance/pluggy/connect-token";
                         return [4 /*yield*/, this.request({
-                                path: "/external/open-finance/pluggy/connect-token",
+                                path: urlPath,
                                 method: 'POST',
                                 headers: headerParameters,
                                 query: queryParameters,
@@ -126,7 +127,7 @@ var PluggyApi = /** @class */ (function (_super) {
      */
     PluggyApi.prototype.webhookRaw = function (requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
-            var queryParameters, headerParameters, response;
+            var queryParameters, headerParameters, urlPath, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -136,8 +137,9 @@ var PluggyApi = /** @class */ (function (_super) {
                         queryParameters = {};
                         headerParameters = {};
                         headerParameters['Content-Type'] = 'application/json';
+                        urlPath = "/external/open-finance/pluggy/webhook";
                         return [4 /*yield*/, this.request({
-                                path: "/external/open-finance/pluggy/webhook",
+                                path: urlPath,
                                 method: 'POST',
                                 headers: headerParameters,
                                 query: queryParameters,

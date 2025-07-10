@@ -100,8 +100,11 @@ export class PluggyApi extends runtime.BaseAPI implements PluggyApiInterface {
 
         headerParameters['Content-Type'] = 'application/json';
 
+
+        let urlPath = `/external/open-finance/pluggy/connect-token`;
+
         const response = await this.request({
-            path: `/external/open-finance/pluggy/connect-token`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -136,8 +139,11 @@ export class PluggyApi extends runtime.BaseAPI implements PluggyApiInterface {
 
         headerParameters['Content-Type'] = 'application/json';
 
+
+        let urlPath = `/external/open-finance/pluggy/webhook`;
+
         const response = await this.request({
-            path: `/external/open-finance/pluggy/webhook`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,

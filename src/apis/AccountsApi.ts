@@ -136,8 +136,12 @@ export class AccountsApi extends runtime.BaseAPI implements AccountsApiInterface
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+
+        let urlPath = `/external/open-finance/items/{itemId}/accounts`;
+        urlPath = urlPath.replace(`{${"itemId"}}`, encodeURIComponent(String(requestParameters['itemId'])));
+
         const response = await this.request({
-            path: `/external/open-finance/items/{itemId}/accounts`.replace(`{${"itemId"}}`, encodeURIComponent(String(requestParameters['itemId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -169,8 +173,12 @@ export class AccountsApi extends runtime.BaseAPI implements AccountsApiInterface
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+
+        let urlPath = `/external/open-finance/accounts/{accountId}/last-success-sync`;
+        urlPath = urlPath.replace(`{${"accountId"}}`, encodeURIComponent(String(requestParameters['accountId'])));
+
         const response = await this.request({
-            path: `/external/open-finance/accounts/{accountId}/last-success-sync`.replace(`{${"accountId"}}`, encodeURIComponent(String(requestParameters['accountId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -204,8 +212,11 @@ export class AccountsApi extends runtime.BaseAPI implements AccountsApiInterface
 
         headerParameters['Content-Type'] = 'application/json';
 
+
+        let urlPath = `/internal/open-finance/accounts/on/bank-account-created`;
+
         const response = await this.request({
-            path: `/internal/open-finance/accounts/on/bank-account-created`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -239,8 +250,11 @@ export class AccountsApi extends runtime.BaseAPI implements AccountsApiInterface
 
         headerParameters['Content-Type'] = 'application/json';
 
+
+        let urlPath = `/internal/queues/account-transactions-sync`;
+
         const response = await this.request({
-            path: `/internal/queues/account-transactions-sync`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,

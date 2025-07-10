@@ -80,7 +80,7 @@ var AccountsApi = /** @class */ (function (_super) {
      */
     AccountsApi.prototype.findAllAccountsRaw = function (requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
-            var queryParameters, headerParameters, response;
+            var queryParameters, headerParameters, urlPath, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -89,8 +89,10 @@ var AccountsApi = /** @class */ (function (_super) {
                         }
                         queryParameters = {};
                         headerParameters = {};
+                        urlPath = "/external/open-finance/items/{itemId}/accounts";
+                        urlPath = urlPath.replace("{".concat("itemId", "}"), encodeURIComponent(String(requestParameters['itemId'])));
                         return [4 /*yield*/, this.request({
-                                path: "/external/open-finance/items/{itemId}/accounts".replace("{".concat("itemId", "}"), encodeURIComponent(String(requestParameters['itemId']))),
+                                path: urlPath,
                                 method: 'GET',
                                 headers: headerParameters,
                                 query: queryParameters,
@@ -124,7 +126,7 @@ var AccountsApi = /** @class */ (function (_super) {
      */
     AccountsApi.prototype.getLastAccountSuccessSyncRaw = function (requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
-            var queryParameters, headerParameters, response;
+            var queryParameters, headerParameters, urlPath, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -133,8 +135,10 @@ var AccountsApi = /** @class */ (function (_super) {
                         }
                         queryParameters = {};
                         headerParameters = {};
+                        urlPath = "/external/open-finance/accounts/{accountId}/last-success-sync";
+                        urlPath = urlPath.replace("{".concat("accountId", "}"), encodeURIComponent(String(requestParameters['accountId'])));
                         return [4 /*yield*/, this.request({
-                                path: "/external/open-finance/accounts/{accountId}/last-success-sync".replace("{".concat("accountId", "}"), encodeURIComponent(String(requestParameters['accountId']))),
+                                path: urlPath,
                                 method: 'GET',
                                 headers: headerParameters,
                                 query: queryParameters,
@@ -168,7 +172,7 @@ var AccountsApi = /** @class */ (function (_super) {
      */
     AccountsApi.prototype.startAccountTransactionsSyncRaw = function (requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
-            var queryParameters, headerParameters, response;
+            var queryParameters, headerParameters, urlPath, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -178,8 +182,9 @@ var AccountsApi = /** @class */ (function (_super) {
                         queryParameters = {};
                         headerParameters = {};
                         headerParameters['Content-Type'] = 'application/json';
+                        urlPath = "/internal/open-finance/accounts/on/bank-account-created";
                         return [4 /*yield*/, this.request({
-                                path: "/internal/open-finance/accounts/on/bank-account-created",
+                                path: urlPath,
                                 method: 'POST',
                                 headers: headerParameters,
                                 query: queryParameters,
@@ -212,7 +217,7 @@ var AccountsApi = /** @class */ (function (_super) {
      */
     AccountsApi.prototype.syncAccountTransactionsRaw = function (requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
-            var queryParameters, headerParameters, response;
+            var queryParameters, headerParameters, urlPath, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -222,8 +227,9 @@ var AccountsApi = /** @class */ (function (_super) {
                         queryParameters = {};
                         headerParameters = {};
                         headerParameters['Content-Type'] = 'application/json';
+                        urlPath = "/internal/queues/account-transactions-sync";
                         return [4 /*yield*/, this.request({
-                                path: "/internal/queues/account-transactions-sync",
+                                path: urlPath,
                                 method: 'POST',
                                 headers: headerParameters,
                                 query: queryParameters,

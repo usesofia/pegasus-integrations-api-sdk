@@ -72,8 +72,11 @@ export class TransactionsApi extends runtime.BaseAPI implements TransactionsApiI
 
         headerParameters['Content-Type'] = 'application/json';
 
+
+        let urlPath = `/internal/queues/account-transactions-page-sync`;
+
         const response = await this.request({
-            path: `/internal/queues/account-transactions-page-sync`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
