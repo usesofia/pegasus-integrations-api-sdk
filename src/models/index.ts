@@ -11,6 +11,7 @@ export * from './CreateConnectTokenResponseBodyDto';
 export * from './ExceptionResponseEntity';
 export * from './ExceptionResponseEntityErrorsInner';
 export * from './HealthResponseDto';
+export * from './IntegrationPreviewEntity';
 export * from './OnBankAccountCreatedPayload';
 export * from './OnBankAccountCreatedPayloadBankAccount';
 export * from './OnBankAccountCreatedPayloadRequester';

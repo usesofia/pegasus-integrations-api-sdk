@@ -27,6 +27,7 @@ __exportStar(require("./CreateConnectTokenResponseBodyDto"), exports);
 __exportStar(require("./ExceptionResponseEntity"), exports);
 __exportStar(require("./ExceptionResponseEntityErrorsInner"), exports);
 __exportStar(require("./HealthResponseDto"), exports);
+__exportStar(require("./IntegrationPreviewEntity"), exports);
 __exportStar(require("./OnBankAccountCreatedPayload"), exports);
 __exportStar(require("./OnBankAccountCreatedPayloadBankAccount"), exports);
 __exportStar(require("./OnBankAccountCreatedPayloadRequester"), exports);

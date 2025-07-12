@@ -5,6 +5,7 @@ package.json
 src/apis/AccountsApi.ts
 src/apis/CacheApi.ts
 src/apis/HealthApi.ts
+src/apis/IntegrationsApi.ts
 src/apis/PluggyApi.ts
 src/apis/TransactionsApi.ts
 src/apis/index.ts
@@ -20,6 +21,7 @@ src/models/CreateConnectTokenResponseBodyDto.ts
 src/models/ExceptionResponseEntity.ts
 src/models/ExceptionResponseEntityErrorsInner.ts
 src/models/HealthResponseDto.ts
+src/models/IntegrationPreviewEntity.ts
 src/models/OnBankAccountCreatedPayload.ts
 src/models/OnBankAccountCreatedPayloadBankAccount.ts
 src/models/OnBankAccountCreatedPayloadRequester.ts
