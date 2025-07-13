@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { OnBankAccountCreatedPayloadRequester } from './OnBankAccountCreatedPayloadRequester';
+import type { ProcessEmailForForwardingIntegrationRequestBodyDtoRequester } from './ProcessEmailForForwardingIntegrationRequestBodyDtoRequester';
 import {
-    OnBankAccountCreatedPayloadRequesterFromJSON,
-    OnBankAccountCreatedPayloadRequesterFromJSONTyped,
-    OnBankAccountCreatedPayloadRequesterToJSON,
-    OnBankAccountCreatedPayloadRequesterToJSONTyped,
-} from './OnBankAccountCreatedPayloadRequester';
+    ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterFromJSON,
+    ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterFromJSONTyped,
+    ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterToJSON,
+    ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterToJSONTyped,
+} from './ProcessEmailForForwardingIntegrationRequestBodyDtoRequester';
 
 /**
  * 
@@ -29,10 +29,10 @@ import {
 export interface AccountTransactionPageSyncJobPayload {
     /**
      * 
-     * @type {OnBankAccountCreatedPayloadRequester}
+     * @type {ProcessEmailForForwardingIntegrationRequestBodyDtoRequester}
      * @memberof AccountTransactionPageSyncJobPayload
      */
-    requester: OnBankAccountCreatedPayloadRequester;
+    requester: ProcessEmailForForwardingIntegrationRequestBodyDtoRequester;
     /**
      * 
      * @type {string}
@@ -74,7 +74,7 @@ export function AccountTransactionPageSyncJobPayloadFromJSONTyped(json: any, ign
     }
     return {
         
-        'requester': OnBankAccountCreatedPayloadRequesterFromJSON(json['requester']),
+        'requester': ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterFromJSON(json['requester']),
         'accountTransactionsSyncJobExecutionId': json['accountTransactionsSyncJobExecutionId'],
         'pageNumber': json['pageNumber'],
         'pageSize': json['pageSize'],
@@ -92,7 +92,7 @@ export function AccountTransactionPageSyncJobPayloadToJSONTyped(value?: AccountT
 
     return {
         
-        'requester': OnBankAccountCreatedPayloadRequesterToJSON(value['requester']),
+        'requester': ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterToJSON(value['requester']),
         'accountTransactionsSyncJobExecutionId': value['accountTransactionsSyncJobExecutionId'],
         'pageNumber': value['pageNumber'],
         'pageSize': value['pageSize'],

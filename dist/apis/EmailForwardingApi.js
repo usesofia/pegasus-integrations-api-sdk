@@ -64,56 +64,110 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PluggyApi = void 0;
+exports.EmailForwardingApi = void 0;
 var runtime = require("../runtime");
 var index_1 = require("../models/index");
 /**
  *
  */
-var PluggyApi = /** @class */ (function (_super) {
-    __extends(PluggyApi, _super);
-    function PluggyApi() {
+var EmailForwardingApi = /** @class */ (function (_super) {
+    __extends(EmailForwardingApi, _super);
+    function EmailForwardingApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * Create a connect token
+     * Receives email forwarding webhooks from email parsing service and processes them to create forwarded email records
+     * Email forwarding webhook endpoint
      */
-    PluggyApi.prototype.createConnectTokenRaw = function (requestParameters, initOverrides) {
+    EmailForwardingApi.prototype.emailForwardingWebhookRaw = function (requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
-            var queryParameters, headerParameters, urlPath, response;
+            var queryParameters, headerParameters, consumes, canConsumeForm, formParams, useForm, urlPath, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (requestParameters['createConnectTokenRequestBodyDto'] == null) {
-                            throw new runtime.RequiredError('createConnectTokenRequestBodyDto', 'Required parameter "createConnectTokenRequestBodyDto" was null or undefined when calling createConnectToken().');
+                        if (requestParameters['to'] == null) {
+                            throw new runtime.RequiredError('to', 'Required parameter "to" was null or undefined when calling emailForwardingWebhook().');
+                        }
+                        if (requestParameters['from'] == null) {
+                            throw new runtime.RequiredError('from', 'Required parameter "from" was null or undefined when calling emailForwardingWebhook().');
+                        }
+                        if (requestParameters['subject'] == null) {
+                            throw new runtime.RequiredError('subject', 'Required parameter "subject" was null or undefined when calling emailForwardingWebhook().');
+                        }
+                        if (requestParameters['email'] == null) {
+                            throw new runtime.RequiredError('email', 'Required parameter "email" was null or undefined when calling emailForwardingWebhook().');
                         }
                         queryParameters = {};
                         headerParameters = {};
-                        headerParameters['Content-Type'] = 'application/json';
-                        urlPath = "/external/open-finance/pluggy/connect-token";
+                        consumes = [
+                            { contentType: 'multipart/form-data' },
+                        ];
+                        canConsumeForm = runtime.canConsumeForm(consumes);
+                        useForm = false;
+                        if (useForm) {
+                            formParams = new FormData();
+                        }
+                        else {
+                            formParams = new URLSearchParams();
+                        }
+                        if (requestParameters['to'] != null) {
+                            formParams.append('to', requestParameters['to']);
+                        }
+                        if (requestParameters['from'] != null) {
+                            formParams.append('from', requestParameters['from']);
+                        }
+                        if (requestParameters['subject'] != null) {
+                            formParams.append('subject', requestParameters['subject']);
+                        }
+                        if (requestParameters['email'] != null) {
+                            formParams.append('email', requestParameters['email']);
+                        }
+                        if (requestParameters['envelope'] != null) {
+                            formParams.append('envelope', requestParameters['envelope']);
+                        }
+                        if (requestParameters['spamScore'] != null) {
+                            formParams.append('spam_score', requestParameters['spamScore']);
+                        }
+                        if (requestParameters['spamReport'] != null) {
+                            formParams.append('spam_report', requestParameters['spamReport']);
+                        }
+                        if (requestParameters['charsets'] != null) {
+                            formParams.append('charsets', requestParameters['charsets']);
+                        }
+                        if (requestParameters['senderIp'] != null) {
+                            formParams.append('sender_ip', requestParameters['senderIp']);
+                        }
+                        if (requestParameters['sPF'] != null) {
+                            formParams.append('SPF', requestParameters['sPF']);
+                        }
+                        if (requestParameters['dkim'] != null) {
+                            formParams.append('dkim', new Blob([JSON.stringify((0, index_1.ForwardedEmailEntityToJSON)(requestParameters['dkim']))], { type: "application/json", }));
+                        }
+                        urlPath = "/external/email-forwarding/webhook";
                         return [4 /*yield*/, this.request({
                                 path: urlPath,
                                 method: 'POST',
                                 headers: headerParameters,
                                 query: queryParameters,
-                                body: (0, index_1.CreateConnectTokenRequestBodyDtoToJSON)(requestParameters['createConnectTokenRequestBodyDto']),
+                                body: formParams,
                             }, initOverrides)];
                     case 1:
                         response = _a.sent();
-                        return [2 /*return*/, new runtime.JSONApiResponse(response, function (jsonValue) { return (0, index_1.CreateConnectTokenResponseBodyDtoFromJSON)(jsonValue); })];
+                        return [2 /*return*/, new runtime.JSONApiResponse(response, function (jsonValue) { return (0, index_1.ForwardedEmailEntityFromJSON)(jsonValue); })];
                 }
             });
         });
     };
     /**
-     * Create a connect token
+     * Receives email forwarding webhooks from email parsing service and processes them to create forwarded email records
+     * Email forwarding webhook endpoint
      */
-    PluggyApi.prototype.createConnectToken = function (requestParameters, initOverrides) {
+    EmailForwardingApi.prototype.emailForwardingWebhook = function (requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
             var response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.createConnectTokenRaw(requestParameters, initOverrides)];
+                    case 0: return [4 /*yield*/, this.emailForwardingWebhookRaw(requestParameters, initOverrides)];
                     case 1:
                         response = _a.sent();
                         return [4 /*yield*/, response.value()];
@@ -123,27 +177,27 @@ var PluggyApi = /** @class */ (function (_super) {
         });
     };
     /**
-     * Pluggy webhook endpoint to receive event notifications
+     * Process email for forwarding integration
      */
-    PluggyApi.prototype.pluggyWebhookRaw = function (requestParameters, initOverrides) {
+    EmailForwardingApi.prototype.processEmailRaw = function (requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
             var queryParameters, headerParameters, urlPath, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (requestParameters['pluggyWebhookRequestBodyDto'] == null) {
-                            throw new runtime.RequiredError('pluggyWebhookRequestBodyDto', 'Required parameter "pluggyWebhookRequestBodyDto" was null or undefined when calling pluggyWebhook().');
+                        if (requestParameters['processEmailForForwardingIntegrationRequestBodyDto'] == null) {
+                            throw new runtime.RequiredError('processEmailForForwardingIntegrationRequestBodyDto', 'Required parameter "processEmailForForwardingIntegrationRequestBodyDto" was null or undefined when calling processEmail().');
                         }
                         queryParameters = {};
                         headerParameters = {};
                         headerParameters['Content-Type'] = 'application/json';
-                        urlPath = "/external/open-finance/pluggy/webhook";
+                        urlPath = "/internal/queues/process-email-for-forwarding-integration";
                         return [4 /*yield*/, this.request({
                                 path: urlPath,
                                 method: 'POST',
                                 headers: headerParameters,
                                 query: queryParameters,
-                                body: (0, index_1.PluggyWebhookRequestBodyDtoToJSON)(requestParameters['pluggyWebhookRequestBodyDto']),
+                                body: (0, index_1.ProcessEmailForForwardingIntegrationRequestBodyDtoToJSON)(requestParameters['processEmailForForwardingIntegrationRequestBodyDto']),
                             }, initOverrides)];
                     case 1:
                         response = _a.sent();
@@ -153,13 +207,13 @@ var PluggyApi = /** @class */ (function (_super) {
         });
     };
     /**
-     * Pluggy webhook endpoint to receive event notifications
+     * Process email for forwarding integration
      */
-    PluggyApi.prototype.pluggyWebhook = function (requestParameters, initOverrides) {
+    EmailForwardingApi.prototype.processEmail = function (requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.pluggyWebhookRaw(requestParameters, initOverrides)];
+                    case 0: return [4 /*yield*/, this.processEmailRaw(requestParameters, initOverrides)];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -167,6 +221,6 @@ var PluggyApi = /** @class */ (function (_super) {
             });
         });
     };
-    return PluggyApi;
+    return EmailForwardingApi;
 }(runtime.BaseAPI));
-exports.PluggyApi = PluggyApi;
+exports.EmailForwardingApi = EmailForwardingApi;

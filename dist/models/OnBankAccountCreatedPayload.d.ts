@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { OnBankAccountCreatedPayloadRequester } from './OnBankAccountCreatedPayloadRequester';
+import type { ProcessEmailForForwardingIntegrationRequestBodyDtoRequester } from './ProcessEmailForForwardingIntegrationRequestBodyDtoRequester';
 import type { OnBankAccountCreatedPayloadBankAccount } from './OnBankAccountCreatedPayloadBankAccount';
 /**
  *
@@ -19,10 +19,10 @@ import type { OnBankAccountCreatedPayloadBankAccount } from './OnBankAccountCrea
 export interface OnBankAccountCreatedPayload {
     /**
      *
-     * @type {OnBankAccountCreatedPayloadRequester}
+     * @type {ProcessEmailForForwardingIntegrationRequestBodyDtoRequester}
      * @memberof OnBankAccountCreatedPayload
      */
-    requester: OnBankAccountCreatedPayloadRequester;
+    requester: ProcessEmailForForwardingIntegrationRequestBodyDtoRequester;
     /**
      *
      * @type {OnBankAccountCreatedPayloadBankAccount}

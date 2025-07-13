@@ -18,7 +18,7 @@ exports.OnBankAccountCreatedPayloadFromJSON = OnBankAccountCreatedPayloadFromJSO
 exports.OnBankAccountCreatedPayloadFromJSONTyped = OnBankAccountCreatedPayloadFromJSONTyped;
 exports.OnBankAccountCreatedPayloadToJSON = OnBankAccountCreatedPayloadToJSON;
 exports.OnBankAccountCreatedPayloadToJSONTyped = OnBankAccountCreatedPayloadToJSONTyped;
-var OnBankAccountCreatedPayloadRequester_1 = require("./OnBankAccountCreatedPayloadRequester");
+var ProcessEmailForForwardingIntegrationRequestBodyDtoRequester_1 = require("./ProcessEmailForForwardingIntegrationRequestBodyDtoRequester");
 var OnBankAccountCreatedPayloadBankAccount_1 = require("./OnBankAccountCreatedPayloadBankAccount");
 /**
  * Check if a given object implements the OnBankAccountCreatedPayload interface.
@@ -38,7 +38,7 @@ function OnBankAccountCreatedPayloadFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'requester': (0, OnBankAccountCreatedPayloadRequester_1.OnBankAccountCreatedPayloadRequesterFromJSON)(json['requester']),
+        'requester': (0, ProcessEmailForForwardingIntegrationRequestBodyDtoRequester_1.ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterFromJSON)(json['requester']),
         'bankAccount': (0, OnBankAccountCreatedPayloadBankAccount_1.OnBankAccountCreatedPayloadBankAccountFromJSON)(json['bankAccount']),
     };
 }
@@ -51,7 +51,7 @@ function OnBankAccountCreatedPayloadToJSONTyped(value, ignoreDiscriminator) {
         return value;
     }
     return {
-        'requester': (0, OnBankAccountCreatedPayloadRequester_1.OnBankAccountCreatedPayloadRequesterToJSON)(value['requester']),
+        'requester': (0, ProcessEmailForForwardingIntegrationRequestBodyDtoRequester_1.ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterToJSON)(value['requester']),
         'bankAccount': (0, OnBankAccountCreatedPayloadBankAccount_1.OnBankAccountCreatedPayloadBankAccountToJSON)(value['bankAccount']),
     };
 }

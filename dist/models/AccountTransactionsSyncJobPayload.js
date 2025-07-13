@@ -18,7 +18,7 @@ exports.AccountTransactionsSyncJobPayloadFromJSON = AccountTransactionsSyncJobPa
 exports.AccountTransactionsSyncJobPayloadFromJSONTyped = AccountTransactionsSyncJobPayloadFromJSONTyped;
 exports.AccountTransactionsSyncJobPayloadToJSON = AccountTransactionsSyncJobPayloadToJSON;
 exports.AccountTransactionsSyncJobPayloadToJSONTyped = AccountTransactionsSyncJobPayloadToJSONTyped;
-var OnBankAccountCreatedPayloadRequester_1 = require("./OnBankAccountCreatedPayloadRequester");
+var ProcessEmailForForwardingIntegrationRequestBodyDtoRequester_1 = require("./ProcessEmailForForwardingIntegrationRequestBodyDtoRequester");
 /**
  * Check if a given object implements the AccountTransactionsSyncJobPayload interface.
  */
@@ -37,7 +37,7 @@ function AccountTransactionsSyncJobPayloadFromJSONTyped(json, ignoreDiscriminato
         return json;
     }
     return {
-        'requester': (0, OnBankAccountCreatedPayloadRequester_1.OnBankAccountCreatedPayloadRequesterFromJSON)(json['requester']),
+        'requester': (0, ProcessEmailForForwardingIntegrationRequestBodyDtoRequester_1.ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterFromJSON)(json['requester']),
         'accountTransactionsSyncJobRequestId': json['accountTransactionsSyncJobRequestId'],
     };
 }
@@ -50,7 +50,7 @@ function AccountTransactionsSyncJobPayloadToJSONTyped(value, ignoreDiscriminator
         return value;
     }
     return {
-        'requester': (0, OnBankAccountCreatedPayloadRequester_1.OnBankAccountCreatedPayloadRequesterToJSON)(value['requester']),
+        'requester': (0, ProcessEmailForForwardingIntegrationRequestBodyDtoRequester_1.ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterToJSON)(value['requester']),
         'accountTransactionsSyncJobRequestId': value['accountTransactionsSyncJobRequestId'],
     };
 }

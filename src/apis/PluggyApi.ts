@@ -35,7 +35,7 @@ export interface CreateConnectTokenRequest {
     createConnectTokenRequestBodyDto: CreateConnectTokenRequestBodyDto;
 }
 
-export interface WebhookRequest {
+export interface PluggyWebhookRequest {
     pluggyWebhookRequestBodyDto: PluggyWebhookRequestBodyDto;
 }
 
@@ -69,12 +69,12 @@ export interface PluggyApiInterface {
      * @throws {RequiredError}
      * @memberof PluggyApiInterface
      */
-    webhookRaw(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    pluggyWebhookRaw(requestParameters: PluggyWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
 
     /**
      * Pluggy webhook endpoint to receive event notifications
      */
-    webhook(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    pluggyWebhook(requestParameters: PluggyWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 
 }
 
@@ -125,11 +125,11 @@ export class PluggyApi extends runtime.BaseAPI implements PluggyApiInterface {
     /**
      * Pluggy webhook endpoint to receive event notifications
      */
-    async webhookRaw(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async pluggyWebhookRaw(requestParameters: PluggyWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters['pluggyWebhookRequestBodyDto'] == null) {
             throw new runtime.RequiredError(
                 'pluggyWebhookRequestBodyDto',
-                'Required parameter "pluggyWebhookRequestBodyDto" was null or undefined when calling webhook().'
+                'Required parameter "pluggyWebhookRequestBodyDto" was null or undefined when calling pluggyWebhook().'
             );
         }
 
@@ -156,8 +156,8 @@ export class PluggyApi extends runtime.BaseAPI implements PluggyApiInterface {
     /**
      * Pluggy webhook endpoint to receive event notifications
      */
-    async webhook(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.webhookRaw(requestParameters, initOverrides);
+    async pluggyWebhook(requestParameters: PluggyWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.pluggyWebhookRaw(requestParameters, initOverrides);
     }
 
 }

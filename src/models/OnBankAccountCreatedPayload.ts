@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { OnBankAccountCreatedPayloadRequester } from './OnBankAccountCreatedPayloadRequester';
+import type { ProcessEmailForForwardingIntegrationRequestBodyDtoRequester } from './ProcessEmailForForwardingIntegrationRequestBodyDtoRequester';
 import {
-    OnBankAccountCreatedPayloadRequesterFromJSON,
-    OnBankAccountCreatedPayloadRequesterFromJSONTyped,
-    OnBankAccountCreatedPayloadRequesterToJSON,
-    OnBankAccountCreatedPayloadRequesterToJSONTyped,
-} from './OnBankAccountCreatedPayloadRequester';
+    ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterFromJSON,
+    ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterFromJSONTyped,
+    ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterToJSON,
+    ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterToJSONTyped,
+} from './ProcessEmailForForwardingIntegrationRequestBodyDtoRequester';
 import type { OnBankAccountCreatedPayloadBankAccount } from './OnBankAccountCreatedPayloadBankAccount';
 import {
     OnBankAccountCreatedPayloadBankAccountFromJSON,
@@ -36,10 +36,10 @@ import {
 export interface OnBankAccountCreatedPayload {
     /**
      * 
-     * @type {OnBankAccountCreatedPayloadRequester}
+     * @type {ProcessEmailForForwardingIntegrationRequestBodyDtoRequester}
      * @memberof OnBankAccountCreatedPayload
      */
-    requester: OnBankAccountCreatedPayloadRequester;
+    requester: ProcessEmailForForwardingIntegrationRequestBodyDtoRequester;
     /**
      * 
      * @type {OnBankAccountCreatedPayloadBankAccount}
@@ -67,7 +67,7 @@ export function OnBankAccountCreatedPayloadFromJSONTyped(json: any, ignoreDiscri
     }
     return {
         
-        'requester': OnBankAccountCreatedPayloadRequesterFromJSON(json['requester']),
+        'requester': ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterFromJSON(json['requester']),
         'bankAccount': OnBankAccountCreatedPayloadBankAccountFromJSON(json['bankAccount']),
     };
 }
@@ -83,7 +83,7 @@ export function OnBankAccountCreatedPayloadToJSONTyped(value?: OnBankAccountCrea
 
     return {
         
-        'requester': OnBankAccountCreatedPayloadRequesterToJSON(value['requester']),
+        'requester': ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterToJSON(value['requester']),
         'bankAccount': OnBankAccountCreatedPayloadBankAccountToJSON(value['bankAccount']),
     };
 }

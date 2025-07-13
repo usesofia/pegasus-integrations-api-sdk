@@ -14,7 +14,7 @@ import type { CreateConnectTokenRequestBodyDto, CreateConnectTokenResponseBodyDt
 export interface CreateConnectTokenRequest {
     createConnectTokenRequestBodyDto: CreateConnectTokenRequestBodyDto;
 }
-export interface WebhookRequest {
+export interface PluggyWebhookRequest {
     pluggyWebhookRequestBodyDto: PluggyWebhookRequestBodyDto;
 }
 /**
@@ -45,11 +45,11 @@ export interface PluggyApiInterface {
      * @throws {RequiredError}
      * @memberof PluggyApiInterface
      */
-    webhookRaw(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    pluggyWebhookRaw(requestParameters: PluggyWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
      * Pluggy webhook endpoint to receive event notifications
      */
-    webhook(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    pluggyWebhook(requestParameters: PluggyWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 }
 /**
  *
@@ -66,9 +66,9 @@ export declare class PluggyApi extends runtime.BaseAPI implements PluggyApiInter
     /**
      * Pluggy webhook endpoint to receive event notifications
      */
-    webhookRaw(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    pluggyWebhookRaw(requestParameters: PluggyWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
     /**
      * Pluggy webhook endpoint to receive event notifications
      */
-    webhook(requestParameters: WebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    pluggyWebhook(requestParameters: PluggyWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 }

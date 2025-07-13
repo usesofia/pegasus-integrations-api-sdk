@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { OnBankAccountCreatedPayloadRequester } from './OnBankAccountCreatedPayloadRequester';
+import type { ProcessEmailForForwardingIntegrationRequestBodyDtoRequester } from './ProcessEmailForForwardingIntegrationRequestBodyDtoRequester';
 import {
-    OnBankAccountCreatedPayloadRequesterFromJSON,
-    OnBankAccountCreatedPayloadRequesterFromJSONTyped,
-    OnBankAccountCreatedPayloadRequesterToJSON,
-    OnBankAccountCreatedPayloadRequesterToJSONTyped,
-} from './OnBankAccountCreatedPayloadRequester';
+    ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterFromJSON,
+    ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterFromJSONTyped,
+    ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterToJSON,
+    ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterToJSONTyped,
+} from './ProcessEmailForForwardingIntegrationRequestBodyDtoRequester';
 
 /**
  * 
@@ -29,10 +29,10 @@ import {
 export interface AccountTransactionsSyncJobPayload {
     /**
      * 
-     * @type {OnBankAccountCreatedPayloadRequester}
+     * @type {ProcessEmailForForwardingIntegrationRequestBodyDtoRequester}
      * @memberof AccountTransactionsSyncJobPayload
      */
-    requester: OnBankAccountCreatedPayloadRequester;
+    requester: ProcessEmailForForwardingIntegrationRequestBodyDtoRequester;
     /**
      * 
      * @type {string}
@@ -60,7 +60,7 @@ export function AccountTransactionsSyncJobPayloadFromJSONTyped(json: any, ignore
     }
     return {
         
-        'requester': OnBankAccountCreatedPayloadRequesterFromJSON(json['requester']),
+        'requester': ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterFromJSON(json['requester']),
         'accountTransactionsSyncJobRequestId': json['accountTransactionsSyncJobRequestId'],
     };
 }
@@ -76,7 +76,7 @@ export function AccountTransactionsSyncJobPayloadToJSONTyped(value?: AccountTran
 
     return {
         
-        'requester': OnBankAccountCreatedPayloadRequesterToJSON(value['requester']),
+        'requester': ProcessEmailForForwardingIntegrationRequestBodyDtoRequesterToJSON(value['requester']),
         'accountTransactionsSyncJobRequestId': value['accountTransactionsSyncJobRequestId'],
     };
 }
