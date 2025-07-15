@@ -56,6 +56,8 @@ function IntegrationPreviewEntityFromJSONTyped(json, ignoreDiscriminator) {
         'title': json['title'],
         'subtitle': json['subtitle'],
         'description': json['description'],
+        'copy': json['copy'] == null ? undefined : json['copy'],
+        'content': json['content'] == null ? undefined : json['content'],
         'iconName': json['iconName'],
         'availability': json['availability'],
     };
@@ -73,6 +75,8 @@ function IntegrationPreviewEntityToJSONTyped(value, ignoreDiscriminator) {
         'title': value['title'],
         'subtitle': value['subtitle'],
         'description': value['description'],
+        'copy': value['copy'],
+        'content': value['content'],
         'iconName': value['iconName'],
         'availability': value['availability'],
     };

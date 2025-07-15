@@ -40,7 +40,19 @@ export interface IntegrationPreviewEntity {
      */
     description: string;
     /**
-     * Name of the integration icon
+     * Copy text. Used to copy phone, email etc.
+     * @type {string}
+     * @memberof IntegrationPreviewEntity
+     */
+    copy?: string | null;
+    /**
+     * Content of the integration. Show on details. In HTML format. Use markdown for formatting.
+     * @type {string}
+     * @memberof IntegrationPreviewEntity
+     */
+    content?: string | null;
+    /**
+     * Name of the integration icon. Lucide react.
      * @type {string}
      * @memberof IntegrationPreviewEntity
      */

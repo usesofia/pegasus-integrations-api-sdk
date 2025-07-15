@@ -44,7 +44,19 @@ export interface IntegrationPreviewEntity {
      */
     description: string;
     /**
-     * Name of the integration icon
+     * Copy text. Used to copy phone, email etc.
+     * @type {string}
+     * @memberof IntegrationPreviewEntity
+     */
+    copy?: string | null;
+    /**
+     * Content of the integration. Show on details. In HTML format. Use markdown for formatting.
+     * @type {string}
+     * @memberof IntegrationPreviewEntity
+     */
+    content?: string | null;
+    /**
+     * Name of the integration icon. Lucide react.
      * @type {string}
      * @memberof IntegrationPreviewEntity
      */
@@ -95,6 +107,8 @@ export function IntegrationPreviewEntityFromJSONTyped(json: any, ignoreDiscrimin
         'title': json['title'],
         'subtitle': json['subtitle'],
         'description': json['description'],
+        'copy': json['copy'] == null ? undefined : json['copy'],
+        'content': json['content'] == null ? undefined : json['content'],
         'iconName': json['iconName'],
         'availability': json['availability'],
     };
@@ -115,6 +129,8 @@ export function IntegrationPreviewEntityToJSONTyped(value?: IntegrationPreviewEn
         'title': value['title'],
         'subtitle': value['subtitle'],
         'description': value['description'],
+        'copy': value['copy'],
+        'content': value['content'],
         'iconName': value['iconName'],
         'availability': value['availability'],
     };
