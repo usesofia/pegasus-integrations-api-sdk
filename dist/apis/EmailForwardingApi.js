@@ -79,77 +79,20 @@ var EmailForwardingApi = /** @class */ (function (_super) {
      * Receives email forwarding webhooks from email parsing service and processes them to create forwarded email records
      * Email forwarding webhook endpoint
      */
-    EmailForwardingApi.prototype.emailForwardingWebhookRaw = function (requestParameters, initOverrides) {
+    EmailForwardingApi.prototype.emailForwardingWebhookRaw = function (initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
-            var queryParameters, headerParameters, consumes, canConsumeForm, formParams, useForm, urlPath, response;
+            var queryParameters, headerParameters, urlPath, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (requestParameters['to'] == null) {
-                            throw new runtime.RequiredError('to', 'Required parameter "to" was null or undefined when calling emailForwardingWebhook().');
-                        }
-                        if (requestParameters['from'] == null) {
-                            throw new runtime.RequiredError('from', 'Required parameter "from" was null or undefined when calling emailForwardingWebhook().');
-                        }
-                        if (requestParameters['subject'] == null) {
-                            throw new runtime.RequiredError('subject', 'Required parameter "subject" was null or undefined when calling emailForwardingWebhook().');
-                        }
-                        if (requestParameters['email'] == null) {
-                            throw new runtime.RequiredError('email', 'Required parameter "email" was null or undefined when calling emailForwardingWebhook().');
-                        }
                         queryParameters = {};
                         headerParameters = {};
-                        consumes = [
-                            { contentType: 'multipart/form-data' },
-                        ];
-                        canConsumeForm = runtime.canConsumeForm(consumes);
-                        useForm = false;
-                        if (useForm) {
-                            formParams = new FormData();
-                        }
-                        else {
-                            formParams = new URLSearchParams();
-                        }
-                        if (requestParameters['to'] != null) {
-                            formParams.append('to', requestParameters['to']);
-                        }
-                        if (requestParameters['from'] != null) {
-                            formParams.append('from', requestParameters['from']);
-                        }
-                        if (requestParameters['subject'] != null) {
-                            formParams.append('subject', requestParameters['subject']);
-                        }
-                        if (requestParameters['email'] != null) {
-                            formParams.append('email', requestParameters['email']);
-                        }
-                        if (requestParameters['envelope'] != null) {
-                            formParams.append('envelope', requestParameters['envelope']);
-                        }
-                        if (requestParameters['spamScore'] != null) {
-                            formParams.append('spam_score', requestParameters['spamScore']);
-                        }
-                        if (requestParameters['spamReport'] != null) {
-                            formParams.append('spam_report', requestParameters['spamReport']);
-                        }
-                        if (requestParameters['charsets'] != null) {
-                            formParams.append('charsets', requestParameters['charsets']);
-                        }
-                        if (requestParameters['senderIp'] != null) {
-                            formParams.append('sender_ip', requestParameters['senderIp']);
-                        }
-                        if (requestParameters['sPF'] != null) {
-                            formParams.append('SPF', requestParameters['sPF']);
-                        }
-                        if (requestParameters['dkim'] != null) {
-                            formParams.append('dkim', new Blob([JSON.stringify((0, index_1.ForwardedEmailEntityToJSON)(requestParameters['dkim']))], { type: "application/json", }));
-                        }
                         urlPath = "/external/email-forwarding/webhook";
                         return [4 /*yield*/, this.request({
                                 path: urlPath,
                                 method: 'POST',
                                 headers: headerParameters,
                                 query: queryParameters,
-                                body: formParams,
                             }, initOverrides)];
                     case 1:
                         response = _a.sent();
@@ -162,12 +105,12 @@ var EmailForwardingApi = /** @class */ (function (_super) {
      * Receives email forwarding webhooks from email parsing service and processes them to create forwarded email records
      * Email forwarding webhook endpoint
      */
-    EmailForwardingApi.prototype.emailForwardingWebhook = function (requestParameters, initOverrides) {
+    EmailForwardingApi.prototype.emailForwardingWebhook = function (initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
             var response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.emailForwardingWebhookRaw(requestParameters, initOverrides)];
+                    case 0: return [4 /*yield*/, this.emailForwardingWebhookRaw(initOverrides)];
                     case 1:
                         response = _a.sent();
                         return [4 /*yield*/, response.value()];

@@ -11,19 +11,6 @@
  */
 import * as runtime from '../runtime';
 import type { ForwardedEmailEntity, ProcessEmailForForwardingIntegrationRequestBodyDto } from '../models/index';
-export interface EmailForwardingWebhookRequest {
-    to: string;
-    from: string;
-    subject: string;
-    email: string;
-    envelope?: string;
-    spamScore?: number;
-    spamReport?: string;
-    charsets?: string;
-    senderIp?: string;
-    sPF?: string;
-    dkim?: object;
-}
 export interface ProcessEmailRequest {
     processEmailForForwardingIntegrationRequestBodyDto: ProcessEmailForForwardingIntegrationRequestBodyDto;
 }
@@ -37,27 +24,16 @@ export interface EmailForwardingApiInterface {
     /**
      * Receives email forwarding webhooks from email parsing service and processes them to create forwarded email records
      * @summary Email forwarding webhook endpoint
-     * @param {string} to Recipient email address
-     * @param {string} from Sender email address
-     * @param {string} subject Email subject
-     * @param {string} email Raw email content
-     * @param {string} [envelope] Email envelope as JSON string
-     * @param {number} [spamScore] Spam score
-     * @param {string} [spamReport] Spam report
-     * @param {string} [charsets] Email charsets as JSON string
-     * @param {string} [senderIp] Sender IP address
-     * @param {string} [sPF] SPF validation result
-     * @param {object} [dkim] DKIM validation results
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EmailForwardingApiInterface
      */
-    emailForwardingWebhookRaw(requestParameters: EmailForwardingWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ForwardedEmailEntity>>;
+    emailForwardingWebhookRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ForwardedEmailEntity>>;
     /**
      * Receives email forwarding webhooks from email parsing service and processes them to create forwarded email records
      * Email forwarding webhook endpoint
      */
-    emailForwardingWebhook(requestParameters: EmailForwardingWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ForwardedEmailEntity>;
+    emailForwardingWebhook(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ForwardedEmailEntity>;
     /**
      *
      * @summary Process email for forwarding integration
@@ -80,12 +56,12 @@ export declare class EmailForwardingApi extends runtime.BaseAPI implements Email
      * Receives email forwarding webhooks from email parsing service and processes them to create forwarded email records
      * Email forwarding webhook endpoint
      */
-    emailForwardingWebhookRaw(requestParameters: EmailForwardingWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ForwardedEmailEntity>>;
+    emailForwardingWebhookRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ForwardedEmailEntity>>;
     /**
      * Receives email forwarding webhooks from email parsing service and processes them to create forwarded email records
      * Email forwarding webhook endpoint
      */
-    emailForwardingWebhook(requestParameters: EmailForwardingWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ForwardedEmailEntity>;
+    emailForwardingWebhook(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ForwardedEmailEntity>;
     /**
      * Process email for forwarding integration
      */

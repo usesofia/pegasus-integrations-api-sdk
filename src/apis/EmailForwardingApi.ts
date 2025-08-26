@@ -28,20 +28,6 @@ import {
     ProcessEmailForForwardingIntegrationRequestBodyDtoToJSON,
 } from '../models/index';
 
-export interface EmailForwardingWebhookRequest {
-    to: string;
-    from: string;
-    subject: string;
-    email: string;
-    envelope?: string;
-    spamScore?: number;
-    spamReport?: string;
-    charsets?: string;
-    senderIp?: string;
-    sPF?: string;
-    dkim?: object;
-}
-
 export interface ProcessEmailRequest {
     processEmailForForwardingIntegrationRequestBodyDto: ProcessEmailForForwardingIntegrationRequestBodyDto;
 }
@@ -56,28 +42,17 @@ export interface EmailForwardingApiInterface {
     /**
      * Receives email forwarding webhooks from email parsing service and processes them to create forwarded email records
      * @summary Email forwarding webhook endpoint
-     * @param {string} to Recipient email address
-     * @param {string} from Sender email address
-     * @param {string} subject Email subject
-     * @param {string} email Raw email content
-     * @param {string} [envelope] Email envelope as JSON string
-     * @param {number} [spamScore] Spam score
-     * @param {string} [spamReport] Spam report
-     * @param {string} [charsets] Email charsets as JSON string
-     * @param {string} [senderIp] Sender IP address
-     * @param {string} [sPF] SPF validation result
-     * @param {object} [dkim] DKIM validation results
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EmailForwardingApiInterface
      */
-    emailForwardingWebhookRaw(requestParameters: EmailForwardingWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ForwardedEmailEntity>>;
+    emailForwardingWebhookRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ForwardedEmailEntity>>;
 
     /**
      * Receives email forwarding webhooks from email parsing service and processes them to create forwarded email records
      * Email forwarding webhook endpoint
      */
-    emailForwardingWebhook(requestParameters: EmailForwardingWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ForwardedEmailEntity>;
+    emailForwardingWebhook(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ForwardedEmailEntity>;
 
     /**
      * 
@@ -105,96 +80,10 @@ export class EmailForwardingApi extends runtime.BaseAPI implements EmailForwardi
      * Receives email forwarding webhooks from email parsing service and processes them to create forwarded email records
      * Email forwarding webhook endpoint
      */
-    async emailForwardingWebhookRaw(requestParameters: EmailForwardingWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ForwardedEmailEntity>> {
-        if (requestParameters['to'] == null) {
-            throw new runtime.RequiredError(
-                'to',
-                'Required parameter "to" was null or undefined when calling emailForwardingWebhook().'
-            );
-        }
-
-        if (requestParameters['from'] == null) {
-            throw new runtime.RequiredError(
-                'from',
-                'Required parameter "from" was null or undefined when calling emailForwardingWebhook().'
-            );
-        }
-
-        if (requestParameters['subject'] == null) {
-            throw new runtime.RequiredError(
-                'subject',
-                'Required parameter "subject" was null or undefined when calling emailForwardingWebhook().'
-            );
-        }
-
-        if (requestParameters['email'] == null) {
-            throw new runtime.RequiredError(
-                'email',
-                'Required parameter "email" was null or undefined when calling emailForwardingWebhook().'
-            );
-        }
-
+    async emailForwardingWebhookRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ForwardedEmailEntity>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        const consumes: runtime.Consume[] = [
-            { contentType: 'multipart/form-data' },
-        ];
-        // @ts-ignore: canConsumeForm may be unused
-        const canConsumeForm = runtime.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): any };
-        let useForm = false;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new URLSearchParams();
-        }
-
-        if (requestParameters['to'] != null) {
-            formParams.append('to', requestParameters['to'] as any);
-        }
-
-        if (requestParameters['from'] != null) {
-            formParams.append('from', requestParameters['from'] as any);
-        }
-
-        if (requestParameters['subject'] != null) {
-            formParams.append('subject', requestParameters['subject'] as any);
-        }
-
-        if (requestParameters['email'] != null) {
-            formParams.append('email', requestParameters['email'] as any);
-        }
-
-        if (requestParameters['envelope'] != null) {
-            formParams.append('envelope', requestParameters['envelope'] as any);
-        }
-
-        if (requestParameters['spamScore'] != null) {
-            formParams.append('spam_score', requestParameters['spamScore'] as any);
-        }
-
-        if (requestParameters['spamReport'] != null) {
-            formParams.append('spam_report', requestParameters['spamReport'] as any);
-        }
-
-        if (requestParameters['charsets'] != null) {
-            formParams.append('charsets', requestParameters['charsets'] as any);
-        }
-
-        if (requestParameters['senderIp'] != null) {
-            formParams.append('sender_ip', requestParameters['senderIp'] as any);
-        }
-
-        if (requestParameters['sPF'] != null) {
-            formParams.append('SPF', requestParameters['sPF'] as any);
-        }
-
-        if (requestParameters['dkim'] != null) {
-            formParams.append('dkim', new Blob([JSON.stringify(ForwardedEmailEntityToJSON(requestParameters['dkim']))], { type: "application/json", }));
-                    }
 
 
         let urlPath = `/external/email-forwarding/webhook`;
@@ -204,7 +93,6 @@ export class EmailForwardingApi extends runtime.BaseAPI implements EmailForwardi
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: formParams,
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ForwardedEmailEntityFromJSON(jsonValue));
@@ -214,8 +102,8 @@ export class EmailForwardingApi extends runtime.BaseAPI implements EmailForwardi
      * Receives email forwarding webhooks from email parsing service and processes them to create forwarded email records
      * Email forwarding webhook endpoint
      */
-    async emailForwardingWebhook(requestParameters: EmailForwardingWebhookRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ForwardedEmailEntity> {
-        const response = await this.emailForwardingWebhookRaw(requestParameters, initOverrides);
+    async emailForwardingWebhook(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ForwardedEmailEntity> {
+        const response = await this.emailForwardingWebhookRaw(initOverrides);
         return await response.value();
     }
 
